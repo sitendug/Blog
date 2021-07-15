@@ -1,0 +1,12 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "Posts",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-07-15T12:41:33+05:30"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}

@@ -1,0 +1,74 @@
+---
+title: "Let's talk animal welfare"
+description: |
+  Some thoughts about the animal-welfare challenges plaguing the zoo industry
+author:
+  - name: Sitendu Goswami
+date: 06-29-2021
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_float: true
+bibliography: /home/sitendu/rproj/ethogram/bib/Library.bib
+categories:
+  - animal welfare
+  - Science
+  - zoo biology
+---
+
+```{r, echo=FALSE}
+## always make sure that the posts are created from within the directory
+## setwd("/home/sitendu/Documents/blog/blog")
+## the command for creating new post is distill::create_post("post_name")
+```
+
+```{r, echo=FALSE,fig.cap= "Asiatic lion at the biggest ex-situ conservation breeding center"}
+knitr::include_graphics(path = "/home/sitendu/Documents/blog/blog/fig/Jesal.png")
+```
+
+# Animal welfare
+
+Welfare is defined by broom as the state of the animal as it tries to cope with its environment. Therefore animal welfare can be seen as the animal tries to adjust to changes in its internal and external.
+
+# Animal-human interactions at zoos
+
+I am a animal behaviour biologist, and I have worked for a over a decade at zoos all over India. For my doctoral thesis, I investigated the role of incumbent husbandry protocols, enclosure design and management practices on the welfare of Asiatic lions at the world's largest conservation breeding centre for the species. Suffice to say that I have some street-cred when it comes to zoos. Despite working for the larger part of my professional academic career at zoos and conservation breeding centres and observing animals, I often find hard to grapple with the concept of zoos in the twenty-first century.
+
+The reason is quite simple, zoos at the very basic level are there for the sake of visitors. If the visitors stoppped coming to the zoos tomorrow, there will be no more zoos. Thankfully the same cannot be said about National parks and wildlife sanctuaries. I think it is very apparent that the primary beneficiary of the zoo is the public and not the animals. And yet zoos try to rebrand themselves as ambassadors of conservation, while conveniently forgiving themselves for past indiscretions. If there ever was a single institution that had committed more crimes towards biodiversity and individual animals, zoos would be upper quartile of the top ten miscreants.
+
+## Animal-human interaction at zoos
+
+I have published some papers before [@goswami_effects_2020]. The first paper published in 2020, talks about how under similar husbandry conditions, animals can have different welfare outcomes. Which brings us to the point about addressing individual variations in zoo-animals and designing husbandry practices to mitigate negative outcomes. In the second paper, we took a more proactive approach and provided some insights on how to improve welfare across different personality types[@goswami_effects_2021]. We found that a combined enrichment strategy, viz., wherein several types of enrichment devices are mixed together and targeted to encourage expression of species-typical behaviour patterns. We found that such enrichment interventions when integrated with daily husbandry practices are effective in providing excellent welfare outcomes for all animals. Subjects were found using the enclosure space more consistently and evenly., and suing exploratory behaviours to seek enrichment objects. Even after removing the positive reinforcement, animals kept engaging with the enrichment devices. We found that social play increased among animals. There were some agonistic interactions in the initial stages, which was quickly mitigated by providing enough enrichment devices for all animals housed in an enclosure.
+
+```{r, echo=FALSE,fig.cap= "Asiatic lions interacting with enrichment devices"}
+knitr::include_graphics(path = "/home/sitendu/Documents/blog/blog/fig/collage.png")
+```
+
+We also found that animals housed in low-complexity enclosures were more likely to suffer premature consequences of poor welfare. Comparatively animals that were housed in complex and large enclosures that afforded them a larger number of withdrawal spaces were more likely to have behaviour welfare indices similar to animals housed in complex enclosures without any visitors. Therefore by providing a complex and large enclosure we can offset the deleterious impacts of visitor disturbance. During our study we also found that Asiatic lions chose to stay as far away as possible from visitors whenever possible.
+
+Several published studies show that close proximity of visitors to captive animals at zoos can have negative
+
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+----------------------------+-------------+----------------+
+| Sl no | Title                                                                                                                                                                                            | Species                        | Authors                    | sample size | Visitor effect |
++=======+==================================================================================================================================================================================================+================================+============================+=============+================+
+| 1\.   | Behaviour and welfare: the visitor effect in captive felids                                                                                                                                      | Felids                         | @suarez_behaviour_2017     | NA          | Negative       |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+----------------------------+-------------+----------------+
+| 2\.   | Can Zoos Ever Be Big Enough for Large Wild Animals? A Review Using an Expert Panel Assessment of the Psychological Priorities of the Amur Tiger (\*Panthera tigris altaica\*) as a Model Species | Amur tiger                     | @veasey_can_2020           | NA          | Negative       |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+----------------------------+-------------+----------------+
+| 3\.   | Environmental influences on stereotypy and the activity budget of Indian leopards (\*Panthera pardus\*) in four zoos in Southern India                                                           | Leopard(*Panthera leo pardus*) | @mallapur_influence_2005   | NA          | Negative       |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+----------------------------+-------------+----------------+
+| 4\.   | The effects of intrinsic enrichment on captive felids                                                                                                                                            | Felids                         | @damasceno_effects_2017    | NA          | Negative       |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+----------------------------+-------------+----------------+
+| 5\.   | Environmental effects on the behavior of zoo-housed lions and tigers, with a case study on the effects of a visual barrier on pacing                                                             | Felids                         | @bashaw_environmental_2007 | NA          | Negative       |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+----------------------------+-------------+----------------+
+| 6\.   | The effects of visitor density and intensity on the behaviour of two captive jaguars(*Panthera onca*).                                                                                           | Felids                         | @sellinger_effects_2005    | NA          | Negative       |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+----------------------------+-------------+----------------+
+| 7\.   | A case study: The effect of visitors on two captive pumas with respect to the time of the day                                                                                                    | Felids                         |                            | NA          | Negative       |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+----------------------------+-------------+----------------+
+
+: Studies on welfare impacts of human-animal interaction
+
+## The argument against animal-human interaction
+
+Animal human interaction is not all bad and can have some beneficial effects, but only if it comes from known individuals. But the animals should not be forced to interact with unknown humans. It is a recipe for disaster. Some zoos nowadays, have started a new discourse to validate the effects of visitor disturbance on animal welfare.

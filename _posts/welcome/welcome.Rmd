@@ -1,0 +1,30 @@
+---
+title: "Welcome"
+description: |
+  Welcome to our new blog, on data science. We hope you enjoy 
+  reading what we have to say!
+author:
+  - name: Sitendu Goswami 
+    url: https://example.com/norajones
+    affiliation: Wildlife Institute of India
+    affiliation_url: https://example.com/spacelysprokets
+date: 06-22-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+```{r}
+setwd("/home/sitendu/Documents/blog/blog")
+```
+
+
+
+

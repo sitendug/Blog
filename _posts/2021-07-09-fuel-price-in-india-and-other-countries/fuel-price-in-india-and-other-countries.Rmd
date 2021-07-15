@@ -1,0 +1,263 @@
+---
+title: "Seven years of Modi government"
+description: |
+   Congratulation to PM Modi and BJP for staying in power and ensuring the continuance of the same. Thanks for nothing!
+author:
+  - name: Sitendu Goswami
+    url: {}
+date: 07-09-2021
+draft: true
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_float: true
+categories:
+  - Rstats
+  - India
+---
+## Seven years of Modi government
+
+In the last two years, Modi government has not given a single good news to the Indian public. 
+It seems that the proverbial luck of the PM has finally run out.
+One may argue that if Mr. Modi had any semblance of competence required to govern India, may be he would not require so much luck to begin with. 
+As evident from the latest cabinet reshuffle, wherein he sacked(figuratively) the incumbent ministers  for health, information & Broadcast and environment as a pre-emptive move before the upcoming UP elections. 
+Faulty economic policies, cow boyish attitude towards governance, starting from demonetization of currency in 2016, and then the nation-wide lock down in 2020.
+The modi government has made a reputation for itself for making a fool of the nation and its public by saying and doing the most asinine things that no one could ever imagine. 
+The tone deafness of this government reached a new  high after the announced that the central vista project  during the middle of a pandemic. 
+Amidst all the price-hike and economic doom, the government continues to raise taxes on petrol and diesel to unprecedented levels.
+Previous governments used to raise prices on a quarterly basis, but not the modi government.
+They are raising prices daily.
+The prices of petrol and diesel has risen consistently since 2020 and it has now crossed over the INR 100 mark in many states.
+Nowadays, the first thing I do after waking up is check the covid numbers and updated price of petrol.
+This is a rather unfortunate situation, that the government has chosen to fleece the public rather than cutting costs at other non-essential sectors like the Central Vista project.
+
+### Highlights of Modi Government
+
+This is a old policy of Modi government. 
+They snatch away some of your privileges, and create a huge inconvenience for everyone.
+All this is done with a propaganda that this is being done for the greater good of the nation. 
+That's the bait, and then the give you back some of the status quo.
+But not before, they take a small slice of what you had already.
+Mr. Modi has done this several times now. 
+In 2016, they made us stand in queues to get our own money under the garb of solving the black money problem.
+Then when the dust settled it was found that we recovered close to no black money, but this exercise busted the kneecaps of our un-organized sector.
+
+In 2019, they took back the state status of Jammu and Kashmir, and now in 2021 after their plans backfired.They are giving it back, and they want people to be grateful for that. Meanwhile the Kashmiris are more disenfranchised than ever. Democratic processes were suspended for more than two years amidst covid lockdowns. The BJP government tried to denigrate the elected Kashmiri polity as " Guptar Gang". Unfortunately BJP did not win any popularity awards in the valley and now they have to meet with the same people they put under house arrest. This is the wickedest form of political pivoting we have witnessed in the recent years.
+
+Since 2020, The farmers bill was floored and the farmers of Punjab and Haryana came out to protest. The government tried its best to curb the protest. They could not deter the farmers from protesting. Therefore now, the bills have been suspended until the next elections. But the farmers would have none of it.  They are still protesting the complete reversal and withdrawal of the bill. 
+
+We have reached a point, where no one trusts the BJP of doing anything out of the general goodness of their heart. Every move by the government seems like a cruel joke, borne out of a psychotic mind.
+
+Since 2020, the BJP government has been raising the fuel prices and raking in a huge amount of  money in passive taxes.
+As per the latest estimates the government has raked in over 20 lakh crore INR in fuel taxes in the past year.
+It seems like the government is trying to push its luck with the middle-class Indian. 
+They probably want to see, how long they can keep increasing the prices till people come out on the streets.
+When the protests reach crescendo, they will probably reduce the prices slowly and at a price much higher than the original levels. 
+I foresee, petrol prices staying north of 80INR/liter for the better part of 2021, atleast until the elections start  next year.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE)
+setwd("/home/sitendu/Documents/blog/blog")
+library(tidyverse)
+library(readODS)
+library(ggtext)
+library(glue)
+library(plotly)
+oilprice <- read_ods("data/oilprice.ods")
+oilprice %>% glimpse()
+
+```
+```{r}
+library(ggtext)
+theme_update(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60))
+```
+```{r}
+oilprice <- oilprice %>% janitor::clean_names()
+mn<-oilprice %>% filter(year == 2004 | year == 2014) %>%  mutate(gdp= gdp_per_capita_us) 
+mnrate <- (mn[2,10] -mn[1,10])*100/mn[1,10]
+mnrate<- mnrate/10
+oilprice<- oilprice %>%  mutate(rule = case_when(year %in% c(2003:2013) ~ "Congress",
+                                      TRUE ~ "BJP"))
+class(oilprice$rule)
+oilprice$rule <- as.factor(oilprice$rule)
+levels(oilprice$rule)
+relevel(oilprice$rule, ref = "Congress")
+```
+```{r , fig.cap= "The yearly trends in oil prices and Indian gdp growth rate", preview = TRUE}
+price<- oilprice %>% janitor::clean_names() %>% 
+  ggplot(aes(x = year, y = (average_closing_price*70/190.93))) +
+  geom_line(aes(y = (average_closing_price*70/190.93), color = "crude oil")) +
+  geom_point(aes(y = (average_closing_price*70/190.93), color = "crude oil")) +
+  geom_line(aes(y = petrol, color = "petrol"))+
+  geom_line(aes(y=diesel, color = "diesel")) +
+  geom_point(aes(y = diesel, color = "diesel")) +
+  geom_point(aes(y = petrol, color = "petrol"))+
+  geom_line(aes(y = nifty50rate, color ="nifty50rate"))+
+  geom_point(aes(y = nifty50rate, color ="nifty50rate"))+
+  geom_line(aes(y= annual_growth_rate, color = "gdp growth rate")) +
+  geom_point(aes(y= annual_growth_rate, color = "gdp growth rate")) +
+  labs(x = "Year", y= "Average closing price of oil <br> in INR/liter",
+       title = "Yearly change in oil prices",
+       color = "Type") +
+  theme_classic()+
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +
+  scale_x_binned(n.breaks=10, nice.breaks = TRUE, limits=c(2003, 2021), show.limits = FALSE) + 
+  scale_y_continuous(n.breaks = 20)  +  theme_bw() + 
+  facet_grid(~ factor(rule, levels= c("Congress", "BJP")))
+price
+plotly::ggplotly(price) %>% layout(legend = list(orientation = "h", x = 0.2, y = -0.2))
+annualgrowth <- ((1962-1574)*100/1574)/7
+annualgrowth <- round(annualgrowth, 2)
+```
+
+
+India is a net-consumer of petroleum products, that means we consume more than we produce. 
+Our  economy is largely dependent on two factors, first the price of Indian rupee as compared to the US Dollar and second, the price of oil.
+A country is said to be in economic recession, when its gdp growth rate is in the negative consistently for two quarters.
+By that estimate, the Indian economy has been in recession since 2019. 
+The state of the Indian economy is not in sync with the stock market.
+As can be seen in the figure1,  our sensex or nifty50 is rising steadily despite the sharp decline in GDP.
+Regardless of the over-valuation in the stock market, thanks to the over zealous retail investors who have moved away from the shelter of the bank FD and dared to take their fortunes to the stock market in the hopes of better returns.
+
+
+
+## Relationship between fuel and crude prices under two regimes.
+
+```{r, echo = FALSE}
+oil<- oilprice %>% janitor::clean_names() %>% 
+  ggplot(aes(x = year, y = (average_closing_price*70/190.93))) +
+  geom_line(aes(y = (average_closing_price*70/190.93), color = "crude oil")) +
+  geom_point(aes(y = (average_closing_price*70/190.93), color = "crude oil"))+
+  labs(x = "Year", y= "Average closing price of oil <br> in INR/liter",
+       title = "Yearly change in oil prices",
+       color = "Type") +
+  geom_line(aes(y = petrol, color = "petrol"))+
+  geom_line(aes(y=diesel, color = "diesel")) +
+  geom_point(aes(y = diesel, color = "diesel")) +
+  geom_point(aes(y = petrol, color = "petrol"))+
+  theme_classic()+
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +  theme_bw() + 
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +
+  facet_wrap(~ factor(rule, levels= c("Congress", "BJP")))
+plotly::ggplotly(oil) %>% layout(legend = list(orientation = "h", x = 0.2, y = -0.2))
+```
+
+
+## Trends in oil prices
+
+
+The Indian economy is a behemoth that primarily constitutes of the unorganized sector and the service sector. 
+However, despite  the falling rate  of GDP since 2018. In fact during the tenure of Modi government till 2021 the GDP per capita has only grown by  `r annualgrowth`% annually. On the other hand between the period of 2004-2014 i.e., the rule of Dr. Manmohan Singh the Annual Growth rate was  around `r mnrate`% per year during the decade that congress ruled. At the beginning of Manmohan Singh's tenure Petrol was sold at INR 33.49/liter while crude oil was INR 14.66/liter. BY 2014 crude oil prices had tripled to INR 43.94 per liter and the petrol prices only doubled in response and stayed at INR 72.26/liter. During this time Diesel was sold at INR 55.48/liter. Presently the crude oil price per liter is INR 29.60/liter and matches the rate of 2009 when the Congress government used to charge INR 44.70 and INR30.86 for petrol and diesel respectively. 
+Today for the same rate of crude oil, we are paying close to 100INR per liter for petrol and diesel. The math just does not add up any more.
+
+
+## The impact of the BJP on the Indian economy
+
+```{r}
+nifty<- oilprice %>% janitor::clean_names() %>% 
+  ggplot(aes(x = year, y = (average_closing_price*70/190.93))) +
+  geom_line(aes(y = nifty50rate, color ="nifty50rate"))+
+  geom_point(aes(y = nifty50rate, color ="nifty50rate"))+
+  geom_line(aes(y= annual_growth_rate, color = "gdp growth rate")) +
+  geom_point(aes(y= annual_growth_rate, color = "gdp growth rate")) +
+  theme_classic()+
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +  theme_bw() + 
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +
+  facet_wrap(~ factor(rule, levels= c("Congress", "BJP"))) # this works but the plots do not lik every nice
+plotly::ggplotly(nifty) %>% layout(legend = list(orientation = "h", x = 0.2, y = -0.2))
+
+niftycong <- 
+  oilprice %>% filter(rule == "Congress") %>% 
+  ggplot(aes(x = year, y = (average_closing_price*70/190.93))) +
+  geom_line(aes(y = nifty50rate, color ="nifty50rate"))+
+  geom_point(aes(y = nifty50rate, color ="nifty50rate"))+
+  geom_line(aes(y= annual_growth_rate, color = "gdp growth rate")) +
+  geom_point(aes(y= annual_growth_rate, color = "gdp growth rate")) +
+  theme_classic()+
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +  theme_bw() + 
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +
+  labs(x = "Year", y= "NIFTY50 levels",
+       title = "Congress",
+       color = NULL) +
+  theme_bw()+
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'none', axis.text.x = element_text(angle = 60)) +
+  scale_x_binned(n.breaks=10, nice.breaks = TRUE, limits=c(2003, 2014), show.limits = FALSE) + 
+  scale_y_continuous(n.breaks = 20)  
+ 
+niftycong
+
+niftybjp <- oilprice %>% filter(rule == "BJP") %>% 
+  ggplot(aes(x = year, y = (average_closing_price*70/190.93))) +
+  geom_line(aes(y = nifty50rate, color ="nifty50rate"))+
+  geom_point(aes(y = nifty50rate, color ="nifty50rate"))+
+  geom_line(aes(y= annual_growth_rate, color = "gdp growth rate")) +
+  geom_point(aes(y= annual_growth_rate, color = "gdp growth rate")) +
+  theme_classic()+
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +  theme_bw() + 
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +
+  labs(x = "Year", y= "NIFTY50 levels",
+       title = "BJP",
+       color = "Type") +
+  theme_bw()+
+  theme(plot.title = element_markdown(hjust = 0.5), legend.position = 'bottom', axis.text.x = element_text(angle = 60)) +
+  scale_x_binned(n.breaks=10, nice.breaks = TRUE, limits=c(2015, 2021), show.limits = FALSE) + 
+  scale_y_continuous(n.breaks = 20) 
+
+niftybjp
+
+niftycong <- ggplotly(niftycong)
+niftycong
+niftybjp <- ggplotly(niftybjp) %>% layout(legend = list(orientation = "h", x = 0.2, y = -0.2))
+miftybjp
+fig <- subplot(niftycong, niftybjp, nrows = 1, shareY= TRUE)
+fig
+```
+
+
+### Demonetisation (2016)
+Mr. Modi is a great conjurer of facts and figures and tweaks them to suit his narrative when the opportunity presents itself.
+While Mr. Modi has been solely responsible for halting the economic growth of this nation on two occasions. 
+First was in November 2016, when Mr. Modi single-handedly and without listening to any experts announced the demonetisation of INR500 and INR1000 currency notes from circulation.
+Late. Mr. Jaitley the incumbent finance minister also may not have been consulted before this strange announcement.
+What followed after this announcement was nothing short of persecution.
+People stood in queues to deposit cash into banks and then again stood in queues to withdraw their expenditure in the form of new currency.
+Many lost a fraction of their savings, some lost their lives due to heatstroke, exhaustion and the trauma of standing in the queues for long periods of time.
+All of this was done under the pretext of retreiving black money from the unorgainzed sector that may have been used to fund illegal activities.
+At the time, demonetization was touted as a proverbial "masterstroke"  of the Modi Government. 
+But when the air cleared and the RBI reported that they have recovered close to 99% of the currency in circulation which meant that this national exercise was in vain and was unable to locate any significant moerlodes of black money.
+This failure in itself should have been reason enough for Mr. Modi to resign and 
+Dr. Arun Kumar  pointed out that most of the black wealth in India is distributed through an existing machinery that religiously converts the black cash into wealth and assets. Therefore cash constitutes only 1% of the entire unaccounted wealth. By that reason, the demonetisation move would have not been able to 
+
+### The covid-19 lockdown (2020)
+
+
+
+### The aasault on the unorganized sector GST
+
+### The favouritism of the chosen few
+
+Modi, Adani and Ambani are words that just go best together like "strawberry and fresh cream" one does not feel right without the other. 
+The BJP government has been a huge proponent of the "supply side economics", wherein they have always focused on incentivizing production rather than encouraging consumption.
+Prof. Arun Kumar in his book "black economy" eludes to the problem of  the Indian economy, wherein he talks about the proliferation of 
+
+
+
+```{r}
+# names(oilprice)
+library(gt)
+oilprice %>% 
+  janitor::clean_names() %>% 
+  mutate( crudeoil = (average_closing_price*75)/159, 
+          gdprate = annual_growth_rate,
+          gdp = gdp_per_capita_us) %>% 
+  select(year, crudeoil, petrol, diesel, nifty50rate, gdprate, gdp) %>% 
+  gt::gt(oilprice) %>% 
+  tab_header( title =  "Yearly change in  oil prices, nifty50 and GDP of India")
+```
+The elections are around the corner, and BJP will reap the prize of its follies.
+
+## The curious case of the stock market and the Indian recession
+
+
+

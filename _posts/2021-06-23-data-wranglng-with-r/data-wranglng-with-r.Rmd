@@ -1,0 +1,382 @@
+---
+title: "Data wrangling with dplyr"
+description: |
+  Tidyverse suit of packages for R provide some nifty solutions to clean and arrange your data
+author:
+  - name: Sitendu Goswami
+    email: sitendugoswami@gmail.com
+date: 06-23-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_float: true
+categories:
+  - Rstats
+  - Tidyverse
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+# Introduction
+Data science as a discipline finds it's applications across all fields of knowledge. If you are from biological sciences, the amount of statistics in  most of the papers, is a testament to this collusion. However statistics and data-science are not the same.  You can perform statistical analysis with your calculator, MS Excel or other software. 
+
+```{r}
+library(tidyverse)
+#install.packages("magrittr")
+library(magrittr)
+library(gapminder)
+gapminder <- as_tibble(gapminder)
+gapminder2 <-  gapminder
+gapminder3 <- gapminder
+```
+
+##  Basic components of a R syntax - 
+ All programming languages at their very cores, are basically a communication platform between the user and the computer. Since computers  understand the binary language, programming languages act as the translating tools which have specific synatx and granmar that help us effectively communicate with our computers and tell it what we want to do. Most programming languages like R have strict grammar that needs to be followed to ensure that the computer understands our commands. Therefore, before embarking on the data science journey we need to understand the rules of communication. At the very base of any sentence is a grammar that includes nouns, verbs, adjectives and punctuation.
+ In the case of R, we can translate these as the following.
+ 
+ - Noun = data 
+ - Verb = function 
+ - Operator = punctuation
+
+## Data types in R (Nouns)
+
+R is a language that  can handle a multitude of data types. Data can be single dataframes, vectors, lists or matrices. 
+
+<br> <br> - character: "a", "swc" <br> <br> - numeric: 2, 15.5 <br> <br> - integer: 2L (the L tells R to store this as an integer) <br> <br> - logical: TRUE, FALSE <br> <br> - complex: 1+4i
+
+class: left \#\# Exercise Data types - class() - what kind of object is it (high-level)? - types() - what is the object's data type (low-level)? - length() - how long is it? What about two dimensional objects? - attributes() - does it have any metadata?
+
+```{r}
+class(gapminder)
+typeof(gapminder$country)
+length(gapminder$continent)
+attributes(gapminder$continent)
+```
+
+class: left \#\# Data structures in R There are three major types of Data Structures - Vector - single dimension - Matrix - two dimensional - Array- n-dimensional
+
+```{r vectors}
+a <- c(1:54)
+class(a)
+```
+
+class: left \#\# Operators in R
+
+-   Operators are used to define relationships between variables in R.
+
+-   Operators are like punctuations in a sentence.
+
+    Different types of operators <br> <br>
+
+    -   Arithmetic <br> <br>
+    -   Logical <br> <br>
+    -   Assignment <br> <br>
+    -   Relation <br> <br>
+    -   Miscellaneous
+
+## Arithmetic operators
+
+<br> <br>
+
+| Operator | Description                         |
+|----------|-------------------------------------|
+| \+       | Addition of two operands            |
+| \-       | subtraction of b from a             |
+| \*       | Multiplication                      |
+| /        | Division of a by b                  |
+| %%       | Remainder from division of a with b |
+| %/%      | quotient from division of a and b   |
+| \^       | a to the power of b                 |
+
+## Exercise for arithmetic operators
+
+```{r quotient, echo=TRUE}
+#find the quotient for  23456789 /15432
+23456789 %/% 15432
+```
+
+```{r  complex equations}
+# R follows BODMAS rule
+ ((12345 + 456789) * (987456/2345678)^212) / 1234568
+```
+
+## Assignment operators
+
+| Operator | Description                                   |
+|----------|-----------------------------------------------|
+| =        | Assigns right side value to left side operand |
+| \<-      | Assigns right side value to left side operand |
+| -\>      | Assigns left side value to right side operand |
+| \<\<-    | Assigns right side value to left side operand |
+| -\>\>    | Assigns left side value to right side operand |
+
+## Exercise for assignment operators
+
+```{r}
+# R Operators - R Assignment Operators
+a = 2
+print ( a )
+a <- TRUE
+print ( a )
+454 -> a
+print ( a )
+a <<- 2.9
+print ( a )
+c(6, 8, 9) -> a
+print ( a )
+```
+
+## Relational operators
+
+| Operator | Description                                              |
+|----------|----------------------------------------------------------|
+| \<       | Is first operand less than second operand                |
+| "\>"     | Is first operand greater than second operand             |
+| ==       | Is first operand equal to second operand                 |
+| \<=      | Is first operand less than or equal to second operand    |
+| "\>="    | Is first operand greater than or equal to second operand |
+| "!="     | Is first operand not equal to second operand             |
+
+## Exercise for relational operators
+
+```{r}
+a <- 7.5
+b <- 2
+print( a < b ) # less than
+print( a > b ) # greater than
+print( a == b ) # equal to
+print( a <= b ) # less than or equal to
+print( a >= b ) # greater than or equal to
+print( a != b ) # not equal to
+```
+
+## Logical operators
+
+| Operator | Description                         |
+|----------|-------------------------------------|
+| &        | Element wise logical AND operation  |
+| ?\|      | Element wise logical OR operation   |
+| !        | Element wise logical NOT operation. |
+| &&       | Operand wise logical AND operation. |
+| \| \|    | Operand wise logical OR operation.  |
+
+## Exercise for Logical operators
+
+```{r}
+# R Operators - R Logical Operators Example for basic logical elements
+ 
+a <- 12 # logical FALSE
+b <- 2 # logical TRUE
+ 
+print ( a > 5 & a < 15 ) # logical AND element wise
+print ( TRUE & FALSE )
+print ( TRUE | FALSE ) # logical OR element wise
+print ( !a ) # logical NOT element wise
+print ( a && b ) # logical AND consolidated for all elements
+print ( a || b ) # logical OR consolidated for all elements
+```
+
+## Miscellaneous operators
+
+| Operator | Description                                        |
+|----------|----------------------------------------------------|
+| %\>%     | pipe operator                                      |
+| %in%     | Identifies if an element(a) belongs to a vector(b) |
+| :        | creates series of vectors from left to right       |
+
+## Exercise for miscellaneous operators
+
+```{r echo=TRUE}
+st <- c(1:234) # create a vector with values from 1 to 234
+# R Operators - R Misc Operators
+print ( a )
+a = c(25, 27, 76)
+b = 27
+print( b %in% a ) # check if b is present within a
+print(a %in% b)
+a = gapminder$country
+b = "Afghanistan"
+c = "Congo"
+print(c %in% a)
+print(b %in% a)
+names(gapminder)
+
+
+gapminder$continent %>% summary()# prints a summary of the factor gapminder$country
+```
+
+## Data wrangling in R
+
+### The endless scope and opportunities
+
+-   Fast
+
+    -   filter and subset variables faster than Excel users
+
+-   Reproducible
+
+    -   Once you have done it, you can do it again with minimal effort-
+    -   Reduces error
+    -   you can correct a mistake by reading the code
+    -   You can go back to your original data like nothing happened
+
+## Topics
+
+-   Pipe operators
+-   Select
+-   Filter
+-   Arrange
+-   Mutate
+-   Joining data
+-   Pivot functions
+
+## Pipe operators
+
+-   %\>% ( ctrl + shift + m)
+-   it takes whatever is present on the left and uses it to define the function written on the right.
+-   traditional R language is read inwards to outwards i.e function 4 (function3(function2(function1(data))))
+
+## Pipe operators cont..
+
+```{r }
+#example 
+#library(gapminder)
+#library(tidyverse)
+```
+
+## Pipe operators help you read and write code from left to right
+
+data %\>% function1 () %\>% function(2) %\>% function3() %\>% function4()
+
+```{r }
+#example 
+```
+
+```{r }
+#library(gapminder)
+gapminder1 <- tbl_df(gapminder)
+gapminder1
+```
+
+## What to do to understand your data?
+
+```{r what are the names of variables, echo=TRUE}
+names(gapminder)
+```
+
+```{r how is the data structured, echo=TRUE}
+str(gapminder)# investigate the structcure of the dataset
+```
+
+## Summarize your data
+
+```{r Summary of the data, echo=TRUE}
+summary(gapminder)
+View(gapminder)
+```
+
+## glimpse function
+
+```{r}
+glimpse(gapminder) # from here you can check the class of each variable as well
+```
+
+## Table function
+
+```{r echo=TRUE}
+table(gapminder$country)# count the number of times 
+```
+
+## Change the class of a variable.
+
+```{r}
+class(gapminder$country)
+gapminder$country <- as.character(gapminder$country)
+```
+
+## Select
+
+-   you have a dataset with lots of variables
+-   You want to select only a few variables to work with
+-   You can select a certain number of columns with this function
+
+```{r}
+glimpse(gapminder)
+gapminder %>% select(continent:gdpPercap) %>% glimpse()
+gapminder1
+```
+
+## Exercise
+
+-   select only columns "country" and "year "and "gdpPercap"
+
+```{r}
+gapminder %>%  select(c(country, year, gdpPercap)) %>%  glimpse()
+gapminder$year <- as.integer(gapminder$year)
+
+str(gapminder)
+```
+
+## Renaming variables
+
+```{r}
+#gapminder <-  rename(gapminder,c(gdp = "gdp"))
+names(gapminder)
+```
+
+## Arranging variables
+
+-   The arrange function helps you reorder the variables
+
+```{r}
+library(gapminder)
+gapminder <- arrange(gapminder,(year))
+glimpse(gapminder)
+View(gapminder)
+gapminder  %>%  arrange(year) %>%  glimpse()
+gapminder %>%  arrange(desc(year)) %>%  glimpse()
+```
+
+## Summarize & aggregate 1
+
+-   suppose you want to see the average gdp per capita of each continent as a data frame.
+
+```{r}
+gapminder %>% group_by(continent, year) %>% glimpse()
+gapminder %>% group_by(continent, year) %>% summarise(meangdp = mean(gdpPercap, na.rm = TRUE)) %>%  print()
+
+```
+
+## summarize 2
+
+-   How do we change this into a data frame?
+-   Use the assign operator.
+
+```{r}
+new <- gapminder %>% group_by(continent, year) %>%
+  summarise(meangdp = mean(gdpPercap, na.rm = TRUE)) %>% print()
+new
+```
+
+-   
+
+## Summarize 3 \| some other functions
+
+-   How many unique countries does the data contain by continent?
+
+```{r}
+gapminder %>%
+group_by(continent) %>%
+summarize(n_obs = n(), n_countries = n_distinct(country)) %>%  print()
+```
+
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

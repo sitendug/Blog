@@ -1,0 +1,104 @@
+---
+title: "Plotting with ggplot2 part1"
+description: |
+  The basics of ggplot library for data visualization in r
+author:
+  - name: Sitendu Goswami
+date: 06-23-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_float: true
+categories:
+  - Rstats
+  - Tidyverse
+bibliography: references.bib
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+options(width = 90)
+```
+
+## What is ggplot and why you need it ?
+
+ggplot is one of the biggest trump cards of tidyverse that along with tidyr, dplyr, and other packages, provides the perfect tool to complete your data science workflow. ggplot allows you to build simple graphs and create layers that stack one on top of the other, to create more complicated and interesting visualizations. for data science teams that use MS Excel or other point and click interfaces to generate graphs and data visualizations, ggplot offers the perfect way to optimize the workflow and reduce the redundancy in data workflows. If you have to create the same graph every month based on updated data, ggplot(r, python or any other data science based programming approaches)
+
+## The basic structure of a ggplot
+
+You can do a lot of things with ggplot. ggplot follows thae grammar of graphics, hence there is a logic behind everything and if you get the underlying logc, you can create any plot you want [@wickham2016]. At the base of everything lies the aesthetic mapping. which is basically the framework for the  plot. 
+The aes() argument tells the ggplot engine, where to look for the x or y variables, and the grouping variables. 
+The next argument that we get is the "geom" , which defines the type of  the plot you are looking for. 
+It stands to reason that each geom should have a aesthetic mapped to it.
+In case you see a geom, where  no aesthetic has been specified, it means that this geom inherits the aesthetic mapping from the base plot. 
+If you want to create a basic plot, you should be ok with only mapping the aes and the geom argument. 
+On the other hand, if you are looking to create something very specific the next set of functions will be helpful.
+
+```{r, echo = TRUE}
+#ggplot2::ggplot(data, aes(x = iv, y = dv, fill = category)) + geom_line()
+plot<- mtcars |>
+  ggplot(aes(x = gear, y = mpg)) # you can see that this creates nothing but it creates the canvas for your plot
+plot <- plot + 
+  geom_col() # so when we add the geom_col() argument we get the plot
+plot
+
+```
+## Legend and axis titles
+
+The plot that we created in the previous section, works if you are in a hurry. But if you want to show-off your visualization skills to peers, then you will probably need to beautify the plot a bit. 
+First and foremost, we need to  edit the axis, title and the labels so that they look clean. 
+For that we can use the "labs" function to specify the title, x and y axis names, you can also specify the legend title by adding the same to your "labs" function.
+
+
+```{r}
+plot + labs(title = "The fuel efficiency of cars with different number of gears", 
+            x = "Number of gears in cars",
+            y = " Fuel efficiency of cars")
+```
+
+## Grouping variables
+
+
+In a traditional plot, you can have one or two variables, which you can define using the 'aes' function. 
+What happens when you have a couple more grouping variables and your data is nested within the same. 
+Take the case of the mtcars dataset. 
+If you are happy with just plotting the mpg of cars with different gears, that's fine.
+Or you can  also explore if the number of cylinders has a role to play in the fuel efficiency figures.
+There are a couple of ways of going about it.
+The first way is to add a grouping variable in the aesthetics argument.
+
+```{r}
+plot<- mtcars |> ggplot(aes(x = gear, y = mpg, fill = cyl)) +
+  geom_col() # you can see that this creates nothing but it creates the canvas for your plot
+plot
+```
+
+If you do not like the stacked bar chart, you can use the position = "dodge" argument to  create a multiple bar chart
+
+ ```{r}
+# plot <- mtcars |> 
+#   ggplot(aes(x = gear, y = mpg, fill = cyl)) +
+#   geom_col(position_dodge2(width = NULL,
+#                           preserve = c("total", "single"),
+#                           padding = 0.1)) # you can see that this creates nothing but it creates the canvas for your plot
+# plot
+```
+## Colouring your plots
+
+You can select colours for your plots. Colours are essential to communicate your visualization effectively. 
+"scale_fill" is the group of commands you need to master, if you are looking to get soem control over the color palette of the graph.  You can also specify the colour of your plot within each of the geom arguments.
+
+
+```{r}
+
+```
+ 
+
+## Compare stats with ggpubr
+
+## Set up themes
+
+

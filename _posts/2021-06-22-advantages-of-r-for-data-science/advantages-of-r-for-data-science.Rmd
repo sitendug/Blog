@@ -1,0 +1,33 @@
+---
+title: "Advantages of R for data science"
+description: |
+  Why all data science teams use R, and why you should too
+author:
+  - name: Sitendu Goswami
+date: 06-22-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_float: true
+categories:
+  - Rstats
+  - Tidyverse
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Why R?
+ For most people in academia, R  is nothing new. However for programmers and computer science graduates, who feel more comfortable with python and other programming languages. Like in every field of work, academicians also require some basic toolsets to hone their skills. These tools  not only help them work more efficiently but also allow room for collaboration. In the twentyfirst century, academicians  need to have some working knowledge of the  command line  along with proficiency in R, Latex, and Python. Latex has been  a staple formatting and documenting language for academcians for more than three decades. However, with the advent of rmarkdown and packages such as bookdown, packagedown, there is a tangible shift happening in that area. Moreover, Latex is proficient in creating pdfs but the world has moved on from pdf to html and web interfaces and this is where R shines. 
+ 
+ So if you care about sharing your work with your peers and funding agencies, it will make sense to learn a bit of R.
+ 
+##  Data science and analytics
+ 
+ There is a difference between data science and data analytics. And there is this twilight zone where all of them intersect.  If you look at any modern data science team, you are likely to find a group of language agnostic people who are just as comfortable at using R or python as creating custom macros on MS excel.  Truth is, nowadays, data science teams are no longer stuck in the back offices, they are part of the decision-making processes at all levels of functioning of an enterprise. Hence  they need to have the necessary tools to understand and address interfacing issues across all departments of the organization
+ 
+
+

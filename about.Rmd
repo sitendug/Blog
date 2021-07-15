@@ -1,0 +1,24 @@
+---
+title: "About Me"
+description: |
+  Welcome to my site
+self_contained: yes
+---
+
+
+```{r, fig.align= "center", echo = FALSE, fig.height= 4, fig.width= 2}
+knitr::include_graphics("fig/IMG_20160604_134311.jpg")
+```
+## Research
+
+- I am interested in understanding the implications of husbandry practices on the welfare of captive animals.
+- My doctoral thesis explores the effects of external and internal factors on the welfare of captive Asiatic lions (*Panthera leo persica*).
+
+## Publications
+1. The effect of personality and rearing-history on the welfare of Asiatic lions(*Panthera leo persica*), 2020.[link](https://peerj.com/articles/8425/)
+2. The effect of combined enrichment practices on the welfare of captive Asiatic lions (*Panthera leo persica*), 2021. [link](https://www.biorxiv.org/content/10.1101/2020.08.24.265686v2)
+3. Effects of faecal inorganic contents in accurate measures of stress and nutrition hormone in large felines: implications for physiological assessments in free-ranging animals, 2021. [link](https://www.biorxiv.org/content/10.1101/2020.11.05.370635v1)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
