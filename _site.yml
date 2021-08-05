@@ -1,6 +1,6 @@
 name: "Thoughts and rants"
 title: "The Thought Factory"
-theme: sitendu.css
+theme:  sitendu.css
 description: |
   Sitendu
 output_dir: "_site"
@@ -10,6 +10,10 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - text: "Resume"
+      href: CV.html
+    - text:  "Projects"
+      href:  Projects.html
 output: distill::distill_article
 base_url: https://sitendu.netlify.app
 search: true

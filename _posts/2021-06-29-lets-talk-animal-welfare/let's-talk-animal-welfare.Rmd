@@ -72,3 +72,8 @@ Several published studies show that close proximity of visitors to captive anima
 ## The argument against animal-human interaction
 
 Animal human interaction is not all bad and can have some beneficial effects, but only if it comes from known individuals. But the animals should not be forced to interact with unknown humans. It is a recipe for disaster. Some zoos nowadays, have started a new discourse to validate the effects of visitor disturbance on animal welfare.
+
+## More on my ABS conference 2021 talk
+```{r, echo =FALSE}
+knitr::include_url("https://sitendug.github.io/ABS2021/")
+```

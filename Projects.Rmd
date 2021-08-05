@@ -1,0 +1,57 @@
+---
+title: "Projects"
+description: |
+ Here are some of the projects I have worked on 
+---
+
+## Studies on housing and enrichment conditions of some species in selected Indian zoos
+
+#### Duration : 2011-2014
+
+#### Description
+
+This project was funded by the Central Zoo Auhtority. The primary objectives of this project were to identify the welfare requirement of over 40 species housed at Indian zoos and conservation breeding programmes. It was an overambitious project to start with but we whittled it down to make it more achievable. Therefore we primarily focused on representative taxa from each Family represented in the project document
+
+-   Felids : Asiatic lion , Bengal tiger and leopard
+
+-   Ursids: Asiatic black bear and Sloth bear
+
+-   Canids: Indian Wild dog
+
+-   Primates: Lion-tailed macaque, Pig-tailed macaque and Rhesus macaque
+
+-   Small carnivores: Red Panda
+
+-   Pheasants: Himalayan Monal, Western Tragopan
+
+-   Megaherbivores: Gaur, Indian Elephant, Single-horned rhinoceros
+
+## Partnering to support Gir lion conservation in Gujarat
+
+#### Duration: 2015-2018
+
+#### Description
+
+Funded by the Zoological Society of London in 2015, this was a collaborative project with Wildlife Institute of India, Gujarat Forest Department. There were four primary components to this project
+
+1.   Wildlife Health management
+
+2.  Ecological monitoring
+
+3.  Evaluation of conservation breeding programme
+
+4.   Education and awareness for lion conservation
+
+I joined the project in 2015 as a senior project biologist with the mandate to evaluate and improve the conservation breeding programme for Asiatic lions. My primary field station was the Sakkarbaug zoological garden, Junagadh, which houses the largest captive population of Asiatic lions in the world ( N =60).
+
+Thanks to the proactive staff and management at the zoo, I could perform a number of small non-invasive experiments to understand the welfare status of captive Asiatic lions. Although the conservation breeding programme was launched in 1995, we were the first to report the welfare status of captive Asiatic lions from its range country.
+
+I enrolled at the doctoral programme of Wildlife Institute of India in 2016 with Dr. Samrat Mondol. My Doctoral thesis " Holistic welfare assessment of captive Asiatic lions in Gujarat" addresses questions of animal welfare and its relevance in conservation breeding programmes in India.
+
+#### Publications from this project
+
+1\. The effect of personality and rearing-history on the welfare of Asiatic lions(\*Panthera leo persica\*), 2020.[link]([https://peerj.com/articles/8425/)](https://peerj.com/articles/8425/))
+
+2\. The effect of combined enrichment practices on the welfare of captive Asiatic lions (\*Panthera leo persica\*), 2021. [link]([https://www.biorxiv.org/content/10.1101/2020.08.24.265686v2)](https://www.biorxiv.org/content/10.1101/2020.08.24.265686v2))
+
+3\. Effects of faecal inorganic contents in accurate measures of stress and nutrition hormone in large felines: implications for physiological assessments in free-ranging animals, 2021. [link]([https://www.biorxiv.org/content/10.1101/2020.11.05.370635v1)](https://www.biorxiv.org/content/10.1101/2020.11.05.370635v1))
