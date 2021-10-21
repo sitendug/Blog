@@ -1,0 +1,33 @@
+---
+title: "Bayesian analysis for animal behaviour"
+description: |
+  A short description of the post.
+author:
+  - name: Sitendu Goswami
+    url: {}
+date: 08-05-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+## Bayesian vs Frequentist thinking
+
+Human beings or for that matter all natural systems learn by experience and prior belief systems. Therefore once you get to understand the fundamental tenets behind bayesian thinking it is really easy to grasp and implement. 
+
+
+## BayesFactor
+
+Simply  put Bayes factor is the ratio of the porbablity of your alternate hypothesis divided by the null hypothesis. 
+This is not the correct definition, far from it. 
+This just helps me remeber the fundamentals of the concept behind yet. 
+BayesFactor(citation) is a nice package that allows us to calculate the bayes factor for different types of analysis like t-tests and anova. 
+If the value of the bayesfactor is more than 1 that means that your data supports the claiams of the alternate hypothesis. an
+
+
+## brms for analysis
+
+
+### Simple analysis examples
+
+
