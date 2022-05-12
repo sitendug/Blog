@@ -7,14 +7,15 @@
     <description>Sitendu
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 12 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 May 2022 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Harsil trip</title>
       <dc:creator>Sitendu Goswami</dc:creator>
       <link>https://sitendu.netlify.app/posts/2022-05-12-harsil-trip</link>
       <description>A birding trip to Harsil, Uttarakhand, India.</description>
       <guid>https://sitendu.netlify.app/posts/2022-05-12-harsil-trip</guid>
-      <pubDate>Thu, 12 May 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 11 May 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2022-05-12-harsil-trip/images/greywagtail1.JPG" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>Principal component analysis</title>
