@@ -1,17 +1,15 @@
 ---
-title: "trip to Harsil"
+title: "Harsil trip"
 description: |
   A birding trip to Harsil, Uttarakhand, India.
 author:
   - name: Sitendu Goswami
+    url: {}
 date: 2022-05-12
 output:
   distill::distill_article:
     self_contained: false
 ---
-
-
-Hi!
 
 ![Harsil valley](harsil1.JPG)
 
@@ -30,4 +28,5 @@ Thankfully we had an early start.
 Mr. Asif was a long time resident of Dehradun and on the way to Harsil he narrated several stories of his exploits and kept us entertained.
 Like typical Doonites, the three of us kept on blaming everyone else for ruining and polluting the beautiful valley.
 Our conversations started from the lost green cover of dehradun to the unsightly expansion of the city that all of us had grown to love.
+
 
