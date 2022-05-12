@@ -18,9 +18,9 @@ Human beings or for that matter all natural systems learn by experience and prio
 
 ## BayesFactor
 
-Simply  put Bayes factor is the ratio of the porbablity of your alternate hypothesis divided by the null hypothesis. 
+Simply  put Bayes factor is the ratio of the probablity of your alternate hypothesis divided by the null hypothesis. 
 This is not the correct definition, far from it. 
-This just helps me remeber the fundamentals of the concept behind yet. 
+This just helps me remember the fundamentals of the concept behind yet. 
 BayesFactor(citation) is a nice package that allows us to calculate the bayes factor for different types of analysis like t-tests and anova. 
 If the value of the bayesfactor is more than 1 that means that your data supports the claiams of the alternate hypothesis. an
 

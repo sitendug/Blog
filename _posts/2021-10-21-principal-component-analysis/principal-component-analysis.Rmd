@@ -1,0 +1,46 @@
+---
+title: "Principal component analysis"
+description: |
+  A short description of the post.
+author:
+  - name: sitendug
+date: 10-21-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Principal component analysis is a great tool for dimensionality reduction.
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(ggrepel)
+library(plotly)
+stock <- readxl::read_xlsx("/home/sitendu/Documents/stocktechnicals.xlsx")
+glimpse(stock)
+```
+
+```{r}
+stock <- readxl::read_xlsx("/home/sitendu/Documents/stocktechnicals.xlsx")
+stock$PE <- as.double(stock$PE)
+stock$div <- as.double(stock$div)
+stockc<- stock[,-1]
+stockc <- na.omit(stockc)
+corstockc<- cor(stockc)
+corstockc
+corrplot::corrplot(corstockc)
+ggplot(stock, aes(x = PB, y = ROE))+ geom_abline() + geom_point(aes(color = Name))
+ggplot(stock, aes(x = PB, y = ROE))+ geom_abline() + geom_text_repel(aes(label= Name))
+stock["PB">20,]
+p1<-ggplot(stock, aes(x = PB, y = ROE))+ geom_abline() + geom_point()+ geom_text(aes(label= Name))
+ggplotly(p1)
+p2<-ggplot(stock, aes(x = div, y = ROE))+ geom_abline() + geom_point()+ geom_text(aes(label= Name))
+ggplotly(p2)
+```
+
