@@ -7,7 +7,15 @@
     <description>Sitendu
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 12 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 May 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Web-scraping with rvest</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2022-05-14-webscraping</link>
+      <description>Websraping with R and rvest is very convenient</description>
+      <guid>https://sitendu.netlify.app/posts/2022-05-14-webscraping</guid>
+      <pubDate>Sat, 14 May 2022 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Harsil trip</title>
       <dc:creator>Sitendu Goswami</dc:creator>
