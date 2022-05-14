@@ -9,6 +9,15 @@
     <generator>Distill</generator>
     <lastBuildDate>Sat, 14 May 2022 00:00:00 +0000</lastBuildDate>
     <item>
+      <title>How to write functions in R</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2022-05-14-how-to-write-functions-in-r</link>
+      <description>Functions are one of the fundamental tools in R programming. It is very easy to create functions in R, if you know the basics.</description>
+      <guid>https://sitendu.netlify.app/posts/2022-05-14-how-to-write-functions-in-r</guid>
+      <pubDate>Sat, 14 May 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2022-05-14-how-to-write-functions-in-r/how-to-write-functions-in-r_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
       <title>Web-scraping with rvest</title>
       <dc:creator>Sitendu Goswami</dc:creator>
       <link>https://sitendu.netlify.app/posts/2022-05-14-webscraping</link>

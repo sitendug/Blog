@@ -1,0 +1,123 @@
+---
+title: "How to write functions in R"
+description: |
+  Functions are one of the fundamental tools in R programming. It is very easy to create functions in R, if you know the basics.
+author:
+  - name: Sitendu Goswami
+    url: {}
+date: 2022-05-14
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+## Functions in R
+
+The syntax for writing functions in R is very straightforward and there is little room for errors. If you know some of the most common functions in R like the apply family, you can create and customize a lot of functions.
+
+
+```{r}
+functiona<- function(x, y){x +y} # this is a basic structure of a function in R
+library(tidyverse)
+
+```
+In the first part of this function , we tell R that this is going to be a function be writing "function".
+Then we add the arguments to the function viz., "x" and "y" within parentheses.
+Next, within  the curly brackets we write the actual mechanics of the function.
+In this case we want to  add x and y together. Let's see how this function works.
+
+```{r}
+x <- 2
+y <- 4
+functiona(x,y)
+
+```
+### What is tidyevals
+
+Above we showed a very simple example of a function in R. But you can do so much more with these functions.
+For example, if you have a template for ggplot, you can encase it within a function and then just change the name of the variables to get fresh outputs, without the need for copying and pasting.
+
+```{r}
+data(mtcars)
+glimpse(mtcars)
+## Suppose you create a graph for cylinder count and mpg of cars using this data set
+mtcars |> 
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point(aes(color = wt, size = wt)) +
+  facet_wrap(~ cyl)+
+  theme(legend.position = "NULL")
+```
+Now that we have created this graph suppose we want to plot the relationship between horsepower and mpg in a similar fashion.
+One option is to write the samy syntax once more and then change the y value to "hp".
+Or you can write  a function to automate the process.
+
+
+```{r, eval=FALSE}
+# So given the information you already have, the function will look like this
+graph<- function(independent, dependent){
+  mtcars |> 
+  ggplot(aes(x = independent, y = dependent)) +
+  geom_point(aes(color = wt, size = wt)) +
+  facet_wrap(~ cyl)+
+  theme(legend.position = "NULL")
+}
+# lets see if this works
+graph(independent = disp,dependent =  hp)
+# We get an error out of this
+```
+
+
+Why didn't this work? The answer lies in tidyeval. 
+You see when you are calling variables within a function they should be within ellipsis or quotation marks.
+Since our function does not know where to look for the variables disp and mpg, it is not able to compute the function.
+So now we when we call the variables dependent and independent within the function syntax, we will wrap them in double curly brackets. 
+This will ensure that the variables are treated as variables and the function should work.
+
+
+```{r}
+graph<- function(independent, dependent){
+  mtcars |> 
+  ggplot(aes(x = {{independent}}, y = {{dependent}})) +
+  geom_point(aes(color = wt, size = wt)) +
+  facet_wrap(~ cyl)+
+  theme(legend.position = "NULL")
+}
+graph(independent = disp,dependent =  hp)
+```
+
+So this is what tidyeval is in the simplest terms. If you are writing functions in R where different variables involved, you must wrap them in double curly braces, or your function will not work.
+
+### Other examples
+
+We have seen one way in which writing functions can help you declutter your code.
+Now lets talk about how we can chain up multi-step data analysis processes using functions.
+Suppose you have a dirty data set that you want to wrangle regularly and pre-process without having to write the same functions over and over again.
+For example, whenever I get a new data-set I will typically run "janitor::clean_names"  followed by "janitor::remove_empty_rows" and "janitor:: remove_empty_cols" to clean up the mess a little bit. 
+
+
+```{r}
+cleanitup<- function(dataset){
+  library(janitor)
+  dataset<<- dataset |> clean_names() |> 
+    janitor::remove_empty()
+}
+cleanitup(mtcars)
+glimpse(mtcars)
+# Since we saved the modified mtcars to dataset, now we can access it outside the function as well
+glimpse(dataset)
+```
+
+If you want to save a object created within your function to the global environment, you can use the "<<-" operator rather than the common "<- ". 
+Writing functions in R is not very difficult or complicated once you have grasped the core concepts behind it.
+
+
+
+
+
+
+
+
