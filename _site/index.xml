@@ -35,15 +35,6 @@
       <media:content url="https://sitendu.netlify.app/posts/2022-05-12-harsil-trip/images/greywagtail1.JPG" medium="image" type="image/jpeg"/>
     </item>
     <item>
-      <title>Principal component analysis</title>
-      <dc:creator>sitendug</dc:creator>
-      <link>https://sitendu.netlify.app/posts/2021-10-21-principal-component-analysis</link>
-      <description>A short description of the post.</description>
-      <guid>https://sitendu.netlify.app/posts/2021-10-21-principal-component-analysis</guid>
-      <pubDate>Thu, 21 Oct 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://sitendu.netlify.app/posts/2021-10-21-principal-component-analysis/principal-component-analysis_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
       <title>Let's talk animal welfare</title>
       <dc:creator>Sitendu Goswami</dc:creator>
       <link>https://sitendu.netlify.app/posts/2021-06-29-lets-talk-animal-welfare</link>

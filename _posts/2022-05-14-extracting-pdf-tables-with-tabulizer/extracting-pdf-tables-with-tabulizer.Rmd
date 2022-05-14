@@ -1,0 +1,57 @@
+---
+title: "Extracting pdf tables with tabulizer"
+description: |
+  Scrape pdf tables with r
+author:
+  - name: Sitendu Goswami
+    url: {}
+date: 2022-05-14
+draft: TRUE
+output:
+  distill::distill_article:
+    self_contained: false
+    
+---
+
+Sometimes you may have  pdfs with a a lot of data inside and you may want to extract them  for further analysis.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+```{r}
+library(tabulizer)
+library(rJava)
+library(tidyverse)
+library(here)
+library(pdftools)
+here::here()
+```
+
+```{r, eval = FALSE}
+# first get the page dimensions
+#dimensions <- tabulizer::locate_areas(file = here("data", "inv16_17.pdf"), pages = 5)
+#dimensions<- as.list(77.66593 ,95.35619, 543.66150, 802.24779 )
+#saveRDS(dimensions, "dimension.RDS")
+dimension<- readRDS("dimension.RDS")
+View(dimension)
+class(dimension)
+table<- extract_tables(file = here("data", "inv16_17.pdf"),
+                       method = "decide",
+                       pages = c(9,24,28,37, 43, 48, 57),
+                       output = "data.frame",
+                       area = dimension)
+  
+glimpse(table)
+View(table)
+class(table)
+table[[1]]
+pagetable<- bind_rows(table[[1]])
+pagetable<- pagetable |> janitor::remove_empty()
+View(pagetable)
+all<- as_tibble(bind_rows(table))
+all<- all |> janitor::remove_empty()
+names(all)
+all$X
+all |> filter(str_detect(X, "ursinus")) |> select(X, X.1, X.4) |> mutate(length = (X.1))
+```
+

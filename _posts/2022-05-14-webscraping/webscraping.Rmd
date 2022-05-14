@@ -31,7 +31,7 @@ This is how webscraping works, since HTML is a language to display content on we
 tiago<- read_html("https://www.91wheels.com/cars/between-5-lakh-to-10-lakh")
 ```
 
-In the next step, I use the selectogadget in chrome extension market to find out the xml path to the two variables of my target i.e. car name and car price range.
+In the next step, I use the selector gadget in chrome extension market to find out the xml path to the two variables of my target i.e. car name and car price range.
 
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
