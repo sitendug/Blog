@@ -7,6 +7,7 @@ author:
     url: {}
 date: 2022-05-14
 draft: TRUE
+preview: logo.png
 output:
   distill::distill_article:
     self_contained: false
@@ -18,6 +19,10 @@ Sometimes you may have  pdfs with a a lot of data inside and you may want to ext
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 ```
+
+![](_posts/2022-05-14-webscraping/logo.png)
+
+
 ```{r}
 library(tabulizer)
 library(rJava)

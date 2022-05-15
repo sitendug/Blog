@@ -35,6 +35,18 @@
       <media:content url="https://sitendu.netlify.app/posts/2022-05-12-harsil-trip/images/greywagtail1.JPG" medium="image" type="image/jpeg"/>
     </item>
     <item>
+      <title>Are zoos relevant today?</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2021-07-10-zoos-in-india</link>
+      <description>A short history of zoo-biology and  wildlife conservation in Indian zoos</description>
+      <category>animal welfare</category>
+      <category>zoo biology</category>
+      <category>Science</category>
+      <guid>https://sitendu.netlify.app/posts/2021-07-10-zoos-in-india</guid>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2021-07-10-zoos-in-india/distill-preview.png" medium="image" type="image/png" width="4320" height="3240"/>
+    </item>
+    <item>
       <title>Let's talk animal welfare</title>
       <dc:creator>Sitendu Goswami</dc:creator>
       <link>https://sitendu.netlify.app/posts/2021-06-29-lets-talk-animal-welfare</link>

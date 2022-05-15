@@ -2,15 +2,15 @@
 title: "Are zoos relevant today?"
 description: |
    A short history of zoo-biology and  wildlife conservation in Indian zoos
-draft: true
+draft: false
 author:
   - name: Sitendu Goswami
 date: 07-10-2021
 output:
   distill::distill_article:
     self_contained: true
-    toc: true
-    toc_float: true
+    toc: false
+    toc_float: false
 categories:
   - animal welfare
   - zoo biology
@@ -26,11 +26,15 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(here)
+library(tidyverse)
+here()
 ```
 
-<!-- ```{r, fig.cap="Asiatic lion living out her life at an Indian zoo", preview= TRUE} -->
-<!-- # knitr::include_graphics("/home/sitendu/Pictures/DSCN2185.JPG") -->
-<!-- ``` -->
+```{r, fig.cap="Asiatic lion living out her life at an Indian zoo", preview= TRUE}
+library(here)
+knitr::include_graphics(here("fig", "DSCN2185.png"))
+```
 
 The short answer is no, not really!
 For the more nuanced version read on.
@@ -88,10 +92,10 @@ So the housing and captive management of wild felids must have been a common pra
 
 
 ```{r, fig.cap = "A wild Asyrian lion released into the mesopotamian  royal garden (668 BCE)", fig.align= "center", preview = TRUE}
-knitr::include_graphics("/home/sitendu/Pictures/lionasyriamesoptamia668bc.png")
+knitr::include_graphics(here("fig", "lionasyriamesoptamia668bc.png"))
 ```
 
-The earliest emperors, conquerors used to hunt and capture wild animals as a way to show their control over the natural forces in the eyes of the ruled.
+Royals of all kinds used to hunt and capture wild animals as a way to show their control over the natural forces in the eyes of the ruled.
 These same royals were also the champions of conservation of certain animal species. Ashoka and his grandfather Chandragupta enacted animal conservation laws. 
 Alexander was known to capture exotic animals and send them back home in Macedonia to showcase his might and control over the unknown world.
 Early rulers in China and Egypt created massive menageries with wild animals and plants as a microcosm of their world-view and to showcase their control over the natural world.
@@ -104,7 +108,7 @@ The common populace would only chance a view of these glorious living artifacts 
 
 
 ```{r, fig.cap= "Elephants as depicted in the baburnama", fig.align='center'}
-knitr::include_graphics("/home/sitendu/Pictures/elephantsbabur.png")
+knitr::include_graphics(here("fig","elephantsbabur.png"))
 ```
 
 The mauryans even restricted the poaching of elephants and preserved forests especially to conserve the resident elephant populations.
@@ -115,7 +119,7 @@ While the zoos of the yore were a symbol of royal power and extravagance.
 As the world moved from autocracies to democracies, governments also needed to show their control over natural forces to the public.
 
 ```{r, fig.cap= "Scenes of a typical mughal hunt, used as a form of diplomacy", fig.align='center'}
-knitr::include_graphics("/home/sitendu/Pictures/mughal hunting.png")
+knitr::include_graphics(here("fig","mughal hunting.png"))
 ```
 
 The combination of modern firearms and European colonialism negatively impacted the wildlife and biodiversity across all continents.
@@ -128,7 +132,7 @@ When you hear the word, you may think that zoos are places where animals are kep
 But you would be only partially correct, the history of zoos is not that simple.
 
 ```{r, fig.cap="Human zoos a offshoot of european colonialism", fig.align='center'}
-knitr::include_graphics("/home/sitendu/Pictures/bellacoolaindians1885cokolowsky.png")
+knitr::include_graphics(here("fig","bellacoolaindians1885cokolowsky.png"))
 ```
 
 In the late nineteenth to the early twentieth centuries, human zoos were common place across Europe and North-America.
@@ -145,7 +149,7 @@ He was also involved in large-scale human and wildlife trafficking, which makes 
 [@carmeli_sight_1997]
 
 ```{r, fig.cap=" Advertisement for Hagenbeck's museum/menagerie", fig.align='center'}
-knitr::include_graphics("/home/sitendu/Pictures/hagenbeckstrainedanimals.png")
+knitr::include_graphics(here("fig","hagenbeckstrainedanimals.png"))
 ```
 
 ### White hunter black heart
@@ -153,7 +157,7 @@ knitr::include_graphics("/home/sitendu/Pictures/hagenbeckstrainedanimals.png")
 Hunters became catchers in the later half of the nineteenth century.
 
 ```{r, fig.cap = "Hans Schomburg a infamous poacher and wildlife trafficker posing with his latest trophy courtesy jutta neimann", fig.align='center'}
-knitr::include_graphics("/home/sitendu/Pictures/l.png")
+knitr::include_graphics(here("fig","l.png"))
 ```
 Christoph Schulz a hunter turned catcher, started working with Hagenbeck in 1909. Schulz and his wife wrote several accounts of German colonial life in East-Africa. 
 Evidences suggest that trafficking of wild animals continued unhindered well into the 1950s.
@@ -161,7 +165,7 @@ By this time, the Europe had been through two great wars and the funding require
 
 
 ```{r, fig.cap=" Animal trafficking for circuses and menageries became profitable in the early twentieth century", fig.align='center'}
-knitr::include_graphics("/home/sitendu/Pictures/schulzcouple1930-35.png")
+knitr::include_graphics(here("fig","schulzcouple1930-35.png"))
 ```
 
 Hence zoos were made relevant and re-branded for the modern era.
@@ -170,7 +174,7 @@ During the mid nineteenth till the mid-twenty-first century, animals were extens
 Circuses were another form animal-profiteering that have vanished or have become irrelevant since the 1990s
 
 ```{r, fig.cap = "Menageries and circus a common  goal", fig.align='center'}
-knitr::include_graphics("/home/sitendu/Pictures/menageriecircus.png")
+knitr::include_graphics(here("fig","menageriecircus.png"))
 ```
 However, despite this intense campaign to change the public perception around zoos, zoos continue to be centres of urban recreational activities.
 
@@ -214,7 +218,8 @@ As highlighted by Atkins[-@atkinson_assessment_2018], most of the the Asiatic li
 It might be prudent to ask, why do European zoos, which do not have the bio-climatic regime to house Asiatic lions, continue to keep them?
 The answer probably lies in the fact that lions and polar bears are crowd pullers and make quite a lot of money for the zoos.
 I think it is time that zoos all across the world stop importing exotic animals for the pleasure of visitors. 
-Zoos should be allowed to keep animals that they are suitable for their region.
+Zoos should be allowed collect and house only those animals that are acclimatized for their region.
+That means, Polar bears and penguins should not be housed at European zoos.
 Zoos should have a conservation plan for all endangered species housed in them.
 I think that most zoos around the world need to trim the fat and reduce their animal holdings to become more sustainable. 
 If a zoo does not have the capability to bred a species *ex-situ*, and have failed at it multiple times, they should not be allowed to acquire any more individuals of the species. 

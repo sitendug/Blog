@@ -76,3 +76,33 @@ final_prices<- final |> separate(lower, into = c("symbol", "lower", "space"), se
 head(final_prices)
 final_prices |> knitr::kable(type = "html") # our final output looks like this.
 ```
+### Scrape the Decathlon India website
+
+```{r}
+decathlon<- function(search, pagenum){
+  library(rvest)
+  library(tidyverse)
+  page<-("https://www.decathlon.in/search?query=")
+  pagecont<- paste0(page, search)
+  prices<- pagecont |>
+    read_html() |>
+    html_nodes("._3wHKeni9X-") |>
+    html_text()
+  # prices
+  productname<- pagecont |> read_html() |>
+    html_nodes(".card-title") |>
+    html_text()
+  # productname
+
+  price<- tibble(productname, prices)
+  price2<- bind_rows(NULL, price)
+  print(price2)
+}
+
+```
+
+```{r}
+data<- decathlon("merino", 1) |> janitor::clean_names()
+head(data)
+```
+
