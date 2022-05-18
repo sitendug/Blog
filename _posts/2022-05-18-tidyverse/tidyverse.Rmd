@@ -147,6 +147,6 @@ polo1 |>  mutate(year = as.factor(year)) |>
   
 ```
 
-Therefore, I would suggest that if you are looking for  a used VW car, it is better to go for a six year old or a eight year old car. 
+If you are looking for  a used VW car, it might be better to go for a six year old or a eight year old car.
 I hope you found this article insightful.
 If you have any suggestions please feel free to share the same in the comments section.
