@@ -8,11 +8,15 @@ author:
 date: 2022-05-18
 output:
   distill::distill_article:
-    self_contained: false
+    self_contained: true
 draft: false
 ---
 
 ## Webscraping olx
+```{r, fig.cap = "scraping olx website for cars", preview=TRUE, echo=FALSE}
+library(here)
+knitr::include_graphics(here("fig", "olx.png"))
+```
 
 Everyone has or will consider buying a car for various reasons.
 As for me, browsing through [olx](www.olx.in) is a hobby and a passion that has been a part of my weekend fix for quite sometime now.
@@ -27,6 +31,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(httr)
 library(rvest)
+library(here)
 ```
 In the first step, we load up the packages "tidyverse", "httr", and "rvest" to  make sure that all the functions we call will work seamlessly. 
 Now, I present to you the function "olxfind". 
