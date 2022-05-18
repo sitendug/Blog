@@ -57,7 +57,7 @@ olxfind<- function(area,yearstart, yearend, make){
       mutate(across(where(is.character), as.numeric))
 
 }
-olxfind(area= "dehradun_g4059236", yearstart = "2014", yearend = "2020",make = "cars-honda")
+olxfind(area= "dehradun_g4059236", yearstart = "2014", yearend = "2020",make = "volkswagen")
 ```
 
 This function takes the following arguments( all strings) i.e., area, yearstart & yearend, and make. 
@@ -97,5 +97,21 @@ Later, I might add some other conditional statements that will link with the "pr
 
 ```{r, echo=TRUE, eval=TRUE}
 head(polo1)
+```
+## Visualization
+
+Now that we have the data at hand, we can probably conduct some exploratory visualizations on the same
+
+```{r}
+library(plotly)
+names(polo1)
+p<- polo1 |> 
+  mutate(year = as.factor(year)) |> 
+  ggplot(aes(x = year, y = prices, group = year)) +
+  geom_boxplot(aes()) +
+  geom_jitter(aes(colour = mileage))+
+  geom_violin(aes(alpha = 0.001), show.legend = FALSE)+
+  theme_bw() 
+ggplotly(p)
 ```
 
