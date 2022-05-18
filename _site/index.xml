@@ -7,7 +7,15 @@
     <description>Sitendu
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 14 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>How to scrape olx</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2022-05-18-tidyverse</link>
+      <description>scrape olx India website to get used car price data</description>
+      <guid>https://sitendu.netlify.app/posts/2022-05-18-tidyverse</guid>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>How to write functions in R</title>
       <dc:creator>Sitendu Goswami</dc:creator>

@@ -106,3 +106,11 @@ data<- decathlon("merino", 1) |> janitor::clean_names()
 head(data)
 ```
 
+
+```{r, eval = false}
+library(rvest)
+library(httr)
+link <- read_html("https://www.olx.in/dehradun_g4059236/cars_c84?filter=first_owner_eq_1%2Cmake_eq_volkswagen%2Cpetrol_eq_petrol%2Cyear_between_2015_to_2021")
+link |>  html_nodes("._3GOwr") |>  html_text()
+```
+

@@ -1,0 +1,96 @@
+---
+title: "How to scrape olx"
+description: |
+  scrape olx India website to get used car price data
+author:
+  - name: Sitendu Goswami
+    url: {}
+date: 2022-05-18
+output:
+  distill::distill_article:
+    self_contained: false
+draft: false
+---
+
+## Webscraping olx
+
+Everyone has or will consider buying a car for various reasons.
+As for me, browsing through [olx](www.olx.in) is a hobby and a passion that has been a part of my weekend fix for quite sometime now.
+Meaningless browsing through classifieds although joyful does not help us understand trends and patterns.
+Therefore, I decided to occasionally scrape the olx website for used car prices and  make visualizations from the same. 
+The primary objective was to have fun, and also grab some good deals when they present themselves. 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+```{r, echo=TRUE,eval=TRUE}
+library(tidyverse)
+library(httr)
+library(rvest)
+```
+In the first step, we load up the packages "tidyverse", "httr", and "rvest" to  make sure that all the functions we call will work seamlessly. 
+Now, I present to you the function "olxfind". 
+
+```{r, echo=TRUE, eval=TRUE}
+olxfind<- function(area,yearstart, yearend, make){
+  
+    link <- paste0("https://www.olx.in/",area,"/cars_c84?filter=first_owner_eq_1%2Cmake_eq_",make,"%2Cyear_between_",yearstart,"_to_",yearend)
+    page<- link |> session() |> read_html() # It is important to create a session first or else you may get a 403 error
+    prices<- page |> html_nodes("._3GOwr") |> html_text()
+    prices
+    yearmileage<- page |> html_nodes(".KFHpP") |> html_text()
+    yearmileage
+    # pic <- page |> html_attrs("img")
+    polo<- tibble(prices, yearmileage)
+    polo1<<- polo |> separate(yearmileage, into= c("year", "mileage"), sep = " - ") |> 
+      mutate(mileage = str_remove_all(mileage,  pattern = "km")) |> 
+      mutate(mileage = str_remove_all(mileage,  pattern = "\\.+0")) |> 
+      mutate(mileage = str_remove_all(mileage,  pattern = "[:punct:]")) |> 
+      mutate(prices = str_remove_all(prices,  pattern = "[:punct:]")) |> 
+      separate(prices, into = c("symbol", "prices"), sep = " ") |> 
+      select(year, mileage, prices) |> 
+      mutate(across(where(is.character), as.numeric))
+
+}
+olxfind(area= "dehradun_g4059236", yearstart = "2014", yearend = "2020",make = "cars-honda")
+```
+
+This function takes the following arguments( all strings) i.e., area, yearstart & yearend, and make. 
+
+### Area
+area is one of the most important arguments for this function. You need to tweak specify this argument accurately, if you want to get area-specific results. 
+As shown in the function definition for olxfind, you can see that all the arguments used are primarily for the purpose of creating the pagelink that will be used to scrape the site. 
+
+
+Therefore, before running the function, you should ideally visit [olx](www.olx.in) and from the area button, select the area of your choice. then from the url you will have to copy the string specifying the region of your choice in the function argument.
+for example, if I use only "dehradun" for the area argument, we will get a error. Since olx adds Dehradun as "dehradun_g4059236", you need to specify that in the area argument. 
+Suppose, you want to search for cars in delhi region then the link for olx becomes "https://www.olx.in/delhi_g4058659/cars_c84". 
+In this case, the area code for delhi is "delhi_g4058659", you need to specify that in ther argument call for area.
+
+### Product
+Notice that the product call is "cars_c84", which is already there in the link so you do not need to modify that from within the function.
+In case, you are interested in motorcycles("motorcycles_c81"), or mobile-phones("mobile-phones_c1453").
+
+
+### Year
+You can also filter the cars based on the year of manufacture. This will certainly help you narrow down to the relevant results and filter the unnecessary information.
+Although year is a numeric variable, for the purposes of this function it is a string since its pasted into a string to form a link so make sure you write "2014" rather than 2014 in the function argument. 
+
+### Make
+ The Olx website provides you the option to select cars from various manufacturers.
+In olxfind you can get data for only one car manufacturer at a time. 
+You can save the data from each call with the name of the manufacturer as a separate column and then use "dplyr::bind_rows" to join them together. This will ensure that you get the maximum number of listings from each manufacturer. 
+
+#### Other limitations of this function
+
+Right now, this function cannot be used to parse more than 40 entries, because of the design of the Olx website. If someone has any idea how to get all data points and bypass the "load more" button please share your insights in the comments section.
+I am also looking into the possibility of downloading the images associated with each data point to the database. 
+In its present form, the function requires users to tweak a number of things if they want to look for other product types. 
+Later, I might add some other conditional statements that will link with the "product" argument and create the relevant page links for users. 
+
+
+
+```{r, echo=TRUE, eval=TRUE}
+head(polo1)
+```
+
