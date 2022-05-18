@@ -10,6 +10,8 @@ output:
   distill::distill_article:
     self_contained: true
 draft: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Webscraping olx
@@ -93,25 +95,58 @@ I am also looking into the possibility of downloading the images associated with
 In its present form, the function requires users to tweak a number of things if they want to look for other product types. 
 Later, I might add some other conditional statements that will link with the "product" argument and create the relevant page links for users. 
 
-
-
-```{r, echo=TRUE, eval=TRUE}
-head(polo1)
-```
 ## Visualization
 
-Now that we have the data at hand, we can probably conduct some exploratory visualizations on the same
+Now that we have the data at hand, we can probably conduct some exploratory visualizations on the same.
+
 
 ```{r}
 library(plotly)
-names(polo1)
-p<- polo1 |> 
+# names(polo1)
+plot1<- polo1 |> 
   mutate(year = as.factor(year)) |> 
   ggplot(aes(x = year, y = prices, group = year)) +
+   geom_violin(aes(alpha = 0.001), show.legend = FALSE)+
   geom_boxplot(aes()) +
-  geom_jitter(aes(colour = mileage))+
-  geom_violin(aes(alpha = 0.001), show.legend = FALSE)+
+  geom_jitter(aes(colour = mileage)) +
+  stat_summary(fun=mean, geom="point", shape=5, size=4)+
+  scale_y_continuous(n.breaks = 10) +
   theme_bw() 
-ggplotly(p)
+#plot1
+plotly::ggplotly(plot1)
 ```
 
+
+This graph reveals that there is some overalp between the used car prices across year of manufacturing. 
+This can be attributed to factors like the model variant, number of previous owners and the colour of the car. 
+However, that is a topic for another day, in this case we will make do with only the variables we hae at our disposal.
+Let's draw another graph by summarizing the mean prices and mileage of each car grouped by the years.
+Here we find that the 
+
+
+```{r}
+polo1 |>  mutate(year = as.factor(year)) |> 
+  group_by(year) |> summarise(prices = mean(prices)) |> kableExtra::kbl() |> kableExtra::kable_styling(position = "center")
+```
+
+
+In this next  plot we create  a summary of the mean prices  of used VW cars across the years of 2014-2019.
+We find that there is a sharp decrease in the prices of used VW cars after the first   five years. 
+There is negligible difference between the mean prices of cars that are six or seven years old. 
+But there is an appreciable drop in car prices when the age is  eight years. 
+The biggest drop in prices occur when the cars age from five to six years old.
+
+
+```{r}
+polo1 |>  mutate(year = as.factor(year)) |> 
+  group_by(year) |> 
+   summarise(pricesm = round(mean(prices),2), mileagem = mean(mileage)) |> 
+  ggplot(aes(x = year, y = pricesm)) +
+  geom_col()+
+  geom_label(aes(label = pricesm))
+  
+```
+
+Therefore, I would suggest that if you are looking for  a used VW car, it is better to go for a six year old or a eight year old car. 
+I hope you found this article insightful.
+If you have any suggestions please feel free to share the same in the comments section.
