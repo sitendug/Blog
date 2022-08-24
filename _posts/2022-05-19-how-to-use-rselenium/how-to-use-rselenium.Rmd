@@ -1,0 +1,37 @@
+---
+title: "How to use Rselenium"
+description: |
+  A short description of the post.
+author:
+  - name: Sitendu Goswami
+    url: {}
+date: 2022-05-19
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, echo=FALSE, eval=FALSE}
+library(RSelenium)
+library(netstat)
+library(tidyverse)
+free_port()
+ports_in_use()
+## Now we want to initiate the Selenium server
+rd<- rsDriver(browser = "chrome",
+              chromever = "101.0.4951.41", 
+              verbose = FALSE,
+              port = 1716L)
+ffd<-rd$client
+# Navigate to page
+ffd$navigate("https://www.olx.in/dehradun_g4059236/cars_c84/")
+# load button
+load_btn<- ff$findElement(using = "css selector", ".rui-1JPTg span")
+loadbtn$clickElement()
+```

@@ -22,11 +22,11 @@ knitr::include_graphics(here("fig", "olx.png"))
 
 Everyone has or will consider buying a car for various reasons.
 As for me, browsing through [olx](www.olx.in) is a hobby and a passion that has been a part of my weekend fix for quite sometime now.
-Meaningless browsing through classifieds although joyful does not help us understand trends and patterns.
+Meaningless browsing through classifieds although joyful, does not help us understand trends and patterns.
 Therefore, I decided to occasionally scrape the olx website for used car prices and  make visualizations from the same. 
 The primary objective was to have fun, and also grab some good deals when they present themselves. 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 
 ```
 ```{r, echo=TRUE,eval=TRUE}
@@ -34,38 +34,82 @@ library(tidyverse)
 library(httr)
 library(rvest)
 library(here)
+library(stringr)
+library(lubridate)
+library(flipTime)
 ```
 In the first step, we load up the packages "tidyverse", "httr", and "rvest" to  make sure that all the functions we call will work seamlessly. 
 Now, I present to you the function "olxfind". 
 
 ```{r, echo=TRUE, eval=TRUE}
-olxfind<- function(area,yearstart, yearend, make){
+olxfind<- function(area,yearstart, yearend, make, fuel){
   
-    link <- paste0("https://www.olx.in/",area,"/cars_c84?filter=first_owner_eq_1%2Cmake_eq_",make,"%2Cyear_between_",yearstart,"_to_",yearend)
+    link <- paste0("https://www.olx.in/",area,"/cars_c84?filter=first_owner_eq_1%2Cmake_eq_",make,"%2Cyear_between_",yearstart,"_to_",yearend, "%2Cpetrol_eq_", fuel)
     page<- link |> session() |> read_html() # It is important to create a session first or else you may get a 403 error
     prices<- page |> html_nodes("._3GOwr") |> html_text()
+    locality <- page |> html_nodes("._1zvfB") |> html_text()
     prices
     yearmileage<- page |> html_nodes(".KFHpP") |> html_text()
+    carname<<- page |> html_nodes("._4aNdc") |> html_text()
     yearmileage
     # pic <- page |> html_attrs("img")
-    polo<- tibble(prices, yearmileage)
+    polo<<- tibble(prices, yearmileage, carname, locality)
     polo1<<- polo |> separate(yearmileage, into= c("year", "mileage"), sep = " - ") |> 
       mutate(mileage = str_remove_all(mileage,  pattern = "km")) |> 
       mutate(mileage = str_remove_all(mileage,  pattern = "\\.+0")) |> 
       mutate(mileage = str_remove_all(mileage,  pattern = "[:punct:]")) |> 
       mutate(prices = str_remove_all(prices,  pattern = "[:punct:]")) |> 
       separate(prices, into = c("symbol", "prices"), sep = " ") |> 
-      select(year, mileage, prices) |> 
-      mutate(across(where(is.character), as.numeric))
-
+      select(year, mileage, prices, carname, locality) |> 
+      mutate(across(c(1:3), as.numeric)) |> 
+      mutate(date = as.character(str_extract_all(locality, 
+                                                 pattern =
+                                                   "[:digit:]{1,2}+\\s+[:alpha:]{3,}")),
+                date = as.character(case_when(
+                  str_detect(locality, 
+                             pattern = "Today") ~ "Today",
+                                              str_detect(locality,
+                                                         pattern = "Yesterday") ~ "Yesterday",
+                                    TRUE ~ date))) |> 
+      mutate(locality = str_remove_all(locality, pattern = date),
+         locality = str_remove_all(locality, pattern = "\\s+ago")) |> 
+      mutate(day = str_extract(date, "[:digit:]{1,2}")) |> 
+      mutate(yeara = as.character(year(Sys.Date()))) |> 
+      mutate(month = as.character(str_extract_all(date, "\\s+[:alpha:]{3}"))) |> 
+      mutate(month = case_when(date %in% c("Today", "Yesterday", "days") ~ months.Date(Sys.Date()),
+                               str_detect(date, "days") ~ months.Date(Sys.Date()),
+                               TRUE ~ month)) |> 
+      mutate(date = case_when(date == "Today" ~ as.character(Sys.Date()),
+                                     date == "Yesterday" ~ as.character(Sys.Date()-1),
+                                     date == "2 days" ~ as.character(Sys.Date() -2),
+                                     date == "3 days" ~ as.character(Sys.Date() -3),
+                                     date == "4 days" ~ as.character(Sys.Date() -4),
+                                     date == "5 days" ~ as.character(Sys.Date() -5),
+                                     date == "6 days" ~ as.character(Sys.Date() -6),
+                                     TRUE ~ paste(yeara, month, day, sep = "-"))) |> 
+      mutate(montha = as.character(str_extract_all(month, "[:alpha:]")),
+             month = as.character(month)) |> 
+      mutate(date = as_date(date)) |> 
+      select(-yeara) |> 
+      mutate(day = day(date))
+return(polo1)
+     Sys.sleep(5)
 }
-olxfind(area= "dehradun_g4059236", yearstart = "2014", yearend = "2020",make = "volkswagen")
+polo1
+```
+```{r}
+
+olxfind(area= "dehradun_g4059236", yearstart = "2014", yearend = "2020",make = "volkswagen", fuel = "diesel")
+polo1<- olxfind(area= "dehradun_g4059236", yearstart = "2014", yearend = "2020",make = "volkswagen", fuel = "petrol")
+class(polo1)
+glimpse(polo1)
+
 ```
 
 This function takes the following arguments( all strings) i.e., area, yearstart & yearend, and make. 
 
 ### Area
-area is one of the most important arguments for this function. You need to tweak specify this argument accurately, if you want to get area-specific results. 
+Area is one of the most important arguments for this function. You need to tweak specify this argument accurately, if you want to get area-specific results. 
 As shown in the function definition for olxfind, you can see that all the arguments used are primarily for the purpose of creating the pagelink that will be used to scrape the site. 
 
 
@@ -97,7 +141,7 @@ Later, I might add some other conditional statements that will link with the "pr
 
 ## Visualization
 
-Now that we have the data at hand, we can probably conduct some exploratory visualizations on the same.
+Now that we have the data at hand, we can probably create some exploratory visualizations from them to better understand the trends and patterns.
 
 
 ```{r}
@@ -121,7 +165,6 @@ This graph reveals that there is some overalp between the used car prices across
 This can be attributed to factors like the model variant, number of previous owners and the colour of the car. 
 However, that is a topic for another day, in this case we will make do with only the variables we hae at our disposal.
 Let's draw another graph by summarizing the mean prices and mileage of each car grouped by the years.
-Here we find that the 
 
 
 ```{r}
@@ -131,10 +174,12 @@ polo1 |>  mutate(year = as.factor(year)) |>
 
 
 In this next  plot we create  a summary of the mean prices  of used VW cars across the years of 2014-2019.
-We find that there is a sharp decrease in the prices of used VW cars after the first   five years. 
+We find that there is a sharp decrease in the prices of used VW cars after the first three years. 
 There is negligible difference between the mean prices of cars that are six or seven years old. 
 But there is an appreciable drop in car prices when the age is  eight years. 
-The biggest drop in prices occur when the cars age from five to six years old.
+The biggest drop in prices occur when the car becomes three year old, whcih leads to roughly 50% decrease in value. 
+The next drop in value occurs, when the car becomes more than five years old.
+The car can be found at its lowest value from eight year onwards.
 
 
 ```{r}
@@ -147,6 +192,125 @@ polo1 |>  mutate(year = as.factor(year)) |>
   
 ```
 
-If you are looking for  a used VW car, it might be better to go for a six year old or a eight year old car.
+If you are looking for  a used VW car, it might be better to go for cars older than four years.
+
+
+## Compare with other car manufacturers
+
+Now that we have covered the VW cars, a question arises in my mind.
+How does the value-retention of VW cars compare to that of honda cars or Hyundai or suzuki for that matter.
+We can compare across the three major car manufacturers and  see whose car holds the most value in the used car market over the years.
+ First we need to download the relevant data for each manufacturer.
+ Since we already have the "olxfind" function, we will only need to change the name of the manufacturer and keep everything else the same.
+ 
+ 
+ 
+```{r}
+polo1<- olxfind(area= "dehradun_g4059236", yearstart = "2012", yearend = "2020",make = "volkswagen")
+honda<- olxfind(area= "dehradun_g4059236", yearstart = "2012", yearend = "2020",make = "cars-honda")
+glimpse(honda)
+suzuki<-olxfind(area= "dehradun_g4059236", yearstart = "2012", yearend = "2020",make = "maruti-suzuki")
+glimpse(suzuki)
+# toyota<-olxfind(area= "dehradun_g4059236", yearstart = "2012", yearend = "2020",make = "toyota")
+# glimpse(toyota)
+
+```
+
+Now we have four dataframes named after each car manufacturer and we need to join them together by the rows. 
+But before doing that, we need to ensure that we add a column called manufacturer to each data frame so that once they are joined we can tell them apart.
+
+
+```{r}
+honda<- honda |> mutate(manufacturer = "honda")
+polo1<- polo1 |> mutate(manufacturer = "VW")
+suzuki<- suzuki |> mutate(manufacturer = "suzuki")
+#toyota<- toyota |> mutate(manufacturer = "toyota")
+# I know I should have written a function for it or a loop
+glimpse(honda)
+```
+
+Now lets join all the four data sets with the bind_rows command from dplyr.
+
+
+```{r}
+# Now we shall bind all the four data frames by their rows
+joineddata<- bind_rows(honda, polo1, suzuki)
+
+```
+
+
+Before proceeding we will check that all the car manufacturers are there.
+
+
+```{r}
+
+joineddata<- joineddata |> mutate(across(where(is.character), as.factor))
+joineddata|> group_by(carname, manufacturer) |> 
+  summarise(prices = mean(prices),
+            count = n()) |>
+  ggplot(aes(y = carname, x = prices, label = count)) +
+  geom_col() +
+  geom_label() +
+  facet_wrap(~manufacturer)
+```
+Some of the cars are more expensive than others. 
+We can notice that the Honda WR-V, and 
+
+Now that we have the data of all four car manufacturers, we can create some comparative visualisations that will help us answer some questions about value-retention in the used car market.
+
+```{r}
+plot2<- joineddata |> 
+  mutate(year = as.factor(year)) |> 
+  group_by(year, manufacturer) |> 
+  summarise(prices = mean(prices), 
+            mileage = mean(mileage),
+            count = n()) |> 
+  mutate(prices = round(prices,1))  |> 
+  ggplot(aes(x = year, y = prices, label = count)) +
+  geom_col(aes(fill = manufacturer), position = "dodge") +
+  coord_flip()+
+  scale_y_continuous(n.breaks = 10) +
+  theme(legend.position = "bottom") 
+#  geom_label(aes(label = prices), nudge_y = 300, check_overlap = TRUE)
+ggplotly(plot2)
+```
+
+```{r}
+plot2<- joineddata |> 
+  mutate(year = as.factor(year)) |> 
+  group_by(year, carname) |> 
+  summarise(prices = mean(prices), 
+            mileage = mean(mileage),
+            count = n()) |> 
+  mutate(prices = round(prices,1)) |> 
+  filter(carname %in% c("Volkswagen Polo", "Honda City", "Maruti Suzuki Swift", "Maruti Suzuki Swift Dzire", "Honda Amaze", "Volkswagen Ameo")) |> 
+  ggplot(aes(x = year, y = prices, label = count)) +
+  geom_col(aes(fill = carname), position = "dodge") +
+  coord_flip()+
+  scale_y_continuous(n.breaks = 10) +
+  theme(legend.position = "bottom") 
+#  geom_label(aes(label = prices), nudge_y = 300, check_overlap = TRUE)
+ggplotly(plot2)
+```
+This is very interesting! We can see that the honda cars are more expensive than the suzuki and VW cars even after three years. 
+This is probably because Honda only sells more expensive and premium models as compared to suzuki and Volkswagen.
+As we move through the years, we can see that the suzuki and VW cars show the sharpest decline in the first five years.
+Then something strange happens, the prices of six and seven  year old suzuki and VW cars are more than five year old offerings. 
+In fact, six year old cars cost as much as three-year old cars.
+This is probably due to some  disparity in the data wherein, most of the higher-end variants and models are listed after five years.
+On the other hand, most people listing their used cars after three years are listing lower level variants.
+If we compare this data along with that of used honda cars, it is evident that the prices of Honda cars decrease steadily in the used car market and therefore are more predictable than VW and suzuki cars.
+
+Keep this in mind when choosing your next used vehicle.
 I hope you found this article insightful.
 If you have any suggestions please feel free to share the same in the comments section.
+
+
+```{r, echo=FALSE, eval=FALSE}
+library(mgcv)
+library(gratia)
+
+```
+
+
+
