@@ -113,6 +113,7 @@ glimpse(dataset)
 
 If you want to save a object created within your function to the global environment, you can use the "<<-" operator rather than the common "<- ". 
 Writing functions in R is not very difficult or complicated once you have grasped the core concepts behind it.
+So that's it, this is pretty much most of what you need to know while writing functions in R.
 
 
 

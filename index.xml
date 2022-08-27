@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>The Thought Factory</title>
+    <link>https://sitendu.netlify.app</link>
+    <atom:link href="https://sitendu.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Sitendu
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>How to scrape olx</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2022-05-18-tidyverse</link>
+      <description>scrape olx India website to get used car price data</description>
+      <guid>https://sitendu.netlify.app/posts/2022-05-18-tidyverse</guid>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2022-05-18-tidyverse/distill-preview.png" medium="image" type="image/png" width="1920" height="995"/>
+    </item>
+    <item>
+      <title>How to write functions in R</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2022-05-14-how-to-write-functions-in-r</link>
+      <description>Functions are one of the fundamental tools in R programming. It is very easy to create functions in R, if you know the basics.</description>
+      <guid>https://sitendu.netlify.app/posts/2022-05-14-how-to-write-functions-in-r</guid>
+      <pubDate>Sat, 14 May 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2022-05-14-how-to-write-functions-in-r/how-to-write-functions-in-r_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Web-scraping with rvest</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2022-05-14-webscraping</link>
+      <description>Websraping with R and rvest is very convenient</description>
+      <guid>https://sitendu.netlify.app/posts/2022-05-14-webscraping</guid>
+      <pubDate>Sat, 14 May 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Harsil trip</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2022-05-12-harsil-trip</link>
+      <description>A birding trip to Harsil, Uttarakhand, India.</description>
+      <guid>https://sitendu.netlify.app/posts/2022-05-12-harsil-trip</guid>
+      <pubDate>Thu, 12 May 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2022-05-12-harsil-trip/images/greywagtail1.JPG" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Are zoos relevant today?</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2021-07-10-zoos-in-india</link>
+      <description>A short history of zoo-biology and  wildlife conservation in Indian zoos</description>
+      <category>animal welfare</category>
+      <category>zoo biology</category>
+      <category>Science</category>
+      <guid>https://sitendu.netlify.app/posts/2021-07-10-zoos-in-india</guid>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2021-07-10-zoos-in-india/distill-preview.png" medium="image" type="image/png" width="4320" height="3240"/>
+    </item>
+    <item>
+      <title>Let's talk animal welfare</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2021-06-29-lets-talk-animal-welfare</link>
+      <description>Some thoughts about the animal-welfare challenges plaguing the zoo industry</description>
+      <category>animal welfare</category>
+      <category>Science</category>
+      <category>zoo biology</category>
+      <guid>https://sitendu.netlify.app/posts/2021-06-29-lets-talk-animal-welfare</guid>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2021-06-29-lets-talk-animal-welfare/distill-preview.png" medium="image" type="image/png" width="1920" height="1440"/>
+    </item>
+    <item>
+      <title>Data wrangling with dplyr</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2021-06-23-data-wranglng-with-r</link>
+      <description>Tidyverse suit of packages for R provide some nifty solutions to clean and arrange your data</description>
+      <category>Rstats</category>
+      <category>Tidyverse</category>
+      <guid>https://sitendu.netlify.app/posts/2021-06-23-data-wranglng-with-r</guid>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Plotting with ggplot2 part1</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2021-06-23-plotting-with-ggplot2-part1</link>
+      <description>The basics of ggplot library for data visualization in r</description>
+      <category>Rstats</category>
+      <category>Tidyverse</category>
+      <guid>https://sitendu.netlify.app/posts/2021-06-23-plotting-with-ggplot2-part1</guid>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://sitendu.netlify.app/posts/2021-06-23-plotting-with-ggplot2-part1/plotting-with-ggplot2-part1_files/figure-html5/unnamed-chunk-1-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Advantages of R for data science</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/2021-06-22-advantages-of-r-for-data-science</link>
+      <description>Why all data science teams use R, and why you should too</description>
+      <category>Rstats</category>
+      <category>Tidyverse</category>
+      <guid>https://sitendu.netlify.app/posts/2021-06-22-advantages-of-r-for-data-science</guid>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Welcome</title>
+      <dc:creator>Sitendu Goswami</dc:creator>
+      <link>https://sitendu.netlify.app/posts/welcome</link>
+      <description>Welcome to our new blog, on data science. We hope you enjoy 
+reading what we have to say!</description>
+      <guid>https://sitendu.netlify.app/posts/welcome</guid>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
