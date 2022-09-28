@@ -1,0 +1,204 @@
+---
+title: "Are zoos relevant today?"
+description: |
+   A short history of zoo-biology and  wildlife conservation in Indian zoos
+author:
+  - name: Sitendu Goswami
+    url: {}
+date: 07-10-2021
+output:
+  distill::distill_article:
+    self_contained: true
+bibliography: /home/sitendu/Documents/Phd/thesisgit/bibliography/Library.bib
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+## Do we really need zoos?
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, fig.cap="Asiatic lion living out her life at an Indian zoo"}
+knitr::include_graphics("/home/sitendu/Pictures/DSCN2185.JPG")
+```
+
+The short answer is no, not really!
+For the more nuanced version read on.
+Let's justify the short answer first though.
+The primary purpose of a zoo is not the welfare of animals, it is primarily geared towards fixing our mistakes, providing a shelter, an insurance policy for endangered species.
+If you come to think of it, the human civilization is buillt on the exploitation of animals and pilferage of natural resources.
+
+History of animals is not separate from the history of human civilization.
+The early hominids slowly moved from fearing large animals to hunting them. But the fear and awe for nature and its manifestations in the form of wild animals. 
+The 
+At the very basic level, zoos are a way for humans to exert control over nature and that is the very reason, why you do not find zoos across all cultures.
+Only the wealthy and the most diverse nations have a history of zoo keeping.
+If all the zoos in the world vanished today, right this instant and all animals housed in them were released back to the wild ( and lets say all of them survived).
+No one would care, except maybe the people who run the zoos or are employed by them.
+So there is no tangible effect of zoos on humans and our world right?
+
+Something similar has already happened in our recent past, the vanishing of circuses.
+circuses and animal shows although exploitative of animals go back longer than zoos.
+Circuses were the entertainment of the masses.
+roaming bands of gypsies with animals would put up performances at villages.
+Hence animals performing tricks became a part of
+
+Zoos are human-made institutions much like temples, offices, railway stations and they do serve a purpose in the human society, but is that purpose relevant or important anymore?
+Contrary to popular opinion, the sole purpose of a modern zoos is not visitor entertainment.
+If the purpose is to keep wild animals in captivity for visitor entertainment, the Roman games and amphitheatres should also be considered zoos.
+Zoological parks or zoos are types of nature conservancy, where visitors come to learn about animals and get a more focused understanding of the natural order of the world.
+So, we can say that there is an educational aspect to zoos, much akin to museums but the specimens are living breathing animals.
+Therefore the modern zoos act as a conduit between the natural world and human civilization.
+It is a place where the urban humans come to experience the natural world and interface with animals.
+Modern zoos also serve the purpose of research and conservation.
+In this article, we will look at both sides of the debate.
+After I have presented the case for both sides, I will leave you stranded, to make your own decision.
+But before that we need to understand how zoos came into being and what were the motivations of the early creators of zoos.
+
+### The status of animals in Ancient India
+
+We should never ignore the original purpose of zoos.
+The period between 10,000-3000 BC was crucial for the construction of the human civilization.
+It was during this period that humans started the large-scale collection and taming of wild animals for utilitarian purposes [@kisling_zoo_2000].
+We can trace the origin of Indian auroch cattle species to sometime around 18,000 BCE [@loftus_evidence_1994]. Sally walker in her chapter on Indian zoos dates the history of wild animal keeping in India to 3000 BCE [@kisling_zoo_2000]
+Since most animal domestications can be traced back to ancient Egypt, Mesopotamia, China, Central America and India, we can assume that the oldest wild animal collections would originate from this region.
+The written records of the ancient Egyptians and Mesopotamians indicate that royal gardens  or menageries were common place. Wild animals such as lions would be tamed by royals as companions  and kept in these royal gardens [@kisling_zoo_2000].
+The Mehrgarh find dates hominid activity in the indian subcontinent to 7000 BCE [@sekar_conservation_2017]. In the *Conservation conundrum of India" Sekar [-@sekar_conservation_2017]
+
+
+
+```{r, fig.cap = "A wild Asyrian lion released into the mesopotamian  royal garden (668 BCE)", fig.align= "center"}
+knitr::include_graphics("/home/sitendu/Pictures/lionasyriamesoptamia668bc.png")
+```
+
+The earliest emperors, conquerors used to hunt and capture wild animals as a way to show their control over the natural forces in the eyes of the ruled.
+These same royals were also the champions of conservation of certain animal species. Ashoka and his grandfather Chandragupta enacted animal conservation laws. 
+Alexander was known to capture exotic animals and send them back home in Macedonia to showcase his might and control over the unknown world.
+Early rulers in China and Egypt created massive menageries with wild animals and plants as a microcosm of their world-view and to showcase their control over the natural world.
+Indian rulers like Chandragupta Maurya, Ashoka, Cholas had a long history of capturing and holding wild animals in captivity that were used for war, agriculture or cultural purposes.
+The elephant was a particular favourite of Indian rulers, who would capture, tame and keep several thousand elephants in their armies .
+The mughals used to hunt with falcons dogs and asiatic cheetahs, therefore capturing wild animals and training them to perform certain tasks were a common practise in the thriteenth century.
+The first zoos were not *ex-situ* conservation center, they were symbols of power accessible to the rulers. 
+The common populace would only chance a view of these glorious living artifacts during royal parades.
+
+
+
+```{r, fig.cap= "Elephants as depicted in the baburnama", fig.align='center'}
+knitr::include_graphics("/home/sitendu/Pictures/elephantsbabur.png")
+```
+
+The mauryans even restricted the poaching of elephants and preserved forests especially to conserve the resident elephant populations.
+Therefore, zoos as a space of public gathering may not have been as ubiquitous as they are today.
+But the culture of capturing and keeping wild animals in captivity must have been ubiquitous across several cultures.
+So we can say clearly that the concepts of animal husbandry and captive animal welfare and management predates zoos.
+While the zoos of the yore were a symbol of royal power and extravagance.
+As the world moved from autocracies to democracies, governments also needed to show their control over natural forces to the public.
+
+```{r, fig.cap= "Scenes of a typical mughal hunt, used as a form of diplomacy", fig.align='center'}
+knitr::include_graphics("/home/sitendu/Pictures/mughal hunting.png")
+```
+
+The combination of modern firearms and European colonialism negatively impacted the wildlife and biodiversity across all continents.
+Like the earliest conquerors, the European colonialists also sent back mementos of their great conquests in the form of exotic animals and plants.
+Thus there was a necessity to establish menageries or zoological gardens, which could handle the large influx of wild fauna across the world.
+
+## Zoos for humans and animals
+
+When you hear the word, you may think that zoos are places where animals are kept for the purpose of education and awareness of humans.
+But you would be only partially correct, the history of zoos is not that simple.
+
+```{r, fig.cap="Human zoos a offshoot of european colonialism", fig.align='center'}
+knitr::include_graphics("/home/sitendu/Pictures/bellacoolaindians1885cokolowsky.png")
+```
+
+In the late nineteenth to the early twentieth centuries, human zoos were common place across Europe and North-America.
+Hunters and traffickers, would bring men and women of rare tribes from remote parts of the world along with representative fauna of the region for the education and entertainment of European city-dwellers.
+Such practices an off-shoot of European colonialism, laid the foundation for racial stereotyping and oppression that continues to plague these countries.
+Unfortunately, what had been done to humans as a part of these " human zoos" continues to be practised under the facade of conservation.
+It is indeed hilarious that a continent that was responsible for the systematic extinction of of most megafauna across the world, now preaches pro-conservation measures
+
+### Hagenbeck's legacy
+
+Carl Hagenbeck is a controversial character in the history of zoos.
+His contribution to the development of the modern zoo is unquestionable.
+He was also involved in large-scale human and wildlife trafficking, which makes him a villain by today's standards.
+[@carmeli_sight_1997]
+
+```{r, fig.cap=" Advertisement for Hagenbeck's museum/menagerie", fig.align='center'}
+knitr::include_graphics("/home/sitendu/Pictures/hagenbeckstrainedanimals.png")
+```
+
+### White hunter black heart
+
+Hunters became catchers in the later half of the nineteenth century.
+
+```{r, fig.cap = "Hans Schomburg a infamous poacher and wildlife trafficker posing with his latest trophy courtesy jutta neimann", fig.align='center'}
+knitr::include_graphics("/home/sitendu/Pictures/l.png")
+```
+Christoph Schulz a hunter turned catcher, started wiorking with hagenbeck in 1909. Schulz and his wife wrote several accounts of german colonial life in East-Africa. 
+Evidences suggest that trafficking of wild animals continued unhindered well into the 1950s.
+By this time, the Europe had been through two great wars and the funding required to poach and capture wild animals must have ebbed.
+
+
+```{r, fig.cap=" Animal trafficking for circuses and menageries became profitable in the early twentieth century", fig.align='center'}
+knitr::include_graphics("/home/sitendu/Pictures/schulzcouple1930-35.png")
+```
+
+Hence zoos were made relevant and re-branded for the modern era.
+They were re-purposed, and became centres for research , nature-education, and also visitor-entertainment.
+During the mid nineteenth till the mid-twenty-first century, animals were extensively used in circuses across the world.
+Circuses were another form animal-profiteering that have vanished or have become irrelevant since the 1990s
+
+```{r, fig.cap = "Menageries and circus a common  goal", fig.align='center'}
+knitr::include_graphics("/home/sitendu/Pictures/menageriecircus.png")
+```
+However, despite this intense campaign to change the public perception around zoos, zoos continue to be centres of urban recreational activities.
+
+## The state of modern Indian zoos
+
+The history of zoos in India can be a bit confusing if you do not use the correct definition of zoos.
+If zoos are defined as a place wherein you house wild animals for the recreation and education of visitors, then the first Indian zoo has to be the Arignar Anna zoological park, Chennai, India(est 1855), which was shortly followed by the Alipore zoological gardens (est 1863).
+For perspective, the Tower of london menagerie ( known as the London zoo) was founded in 1831 under the zoological society of london.
+
+## Conservation breeding centers for endangered species in India
+
+There are over 192 zoos in India, most of the zoos in India are state-run.
+In the early 2000s the government of India identified over 34 endemic species across all states of India and identified coordinating zoos as conservation breeding centers for the said species.
+For example, Padmaja Naidu Himalayan Zoological Park, Darjeeling is the corodinating zoo for the conservation breeding of Himalayan wolf(*Canis lupus chanco*), Red panda (*Ailurus fulgens fulgens*), Snow leopard(*Uncia uncia*), and Pheasant(*Lophophora impejanus*).
+While Sakkarbaug zoo, Junagadh handles the conservation breeding for the following species Asiatic lion ( *Panthera leo persica* ), Wolf ( *Canis lupus pallipes*), Asiatic wild ass(*Equus hemionus khuur*) and Indian Vulture.
+Similarly Nehru Zoological Park, Hyderabad, is one of the coordinating centers for *ex-situ* conservation breeding of mouse-deer().
+
+## What the future holds for modern zoos
+
+In the twenty-first century, I foresee zoos losing popularity due to legitimate ethical concerns. Just like the circus  lost its popular support, zoos that use animals for cheap entertainment and do not have any tangible  links with *ex-situ* conservation will also disappear.
+There are writings on the wall which suggest that zoos already have lost popular support to some degree and need to increase the level of visitor-animal interaction  to garner more attention.
+
+
+There is a large body of research that suggests thatcaptive animals do not seek out visitor interactions. In fact, some species display significant amount of stereotypy in response to forced visitor presence [@sherwen_visitor_2019].
+However, in the past couple of years, I have noticed a slight shift in narrative to the effect of visitor interactions on animals.
+Recently a group of researchers claimed that elephants looked forward to interacting with visitors[@fernandez_public_2021].
+It seems to me that the elephants were looking forward to the treats provided by the visitors.
+The zoo was looking forward to the extra money they could make out of these "unique experiences".
+The visitors were looking for some interesting selfies and instagram clout.
+While the authors, probably had some serious alignment of interest with the zoo administration. 
+
+
+Zoos still serve the purpose of nature education and sensitization of public through live exhibits. 
+I think it will become increasingly difficult for zoos to import exotic animals as there will be an acute shortage of biodiversity across the world.
+If there was a rule, that prevented zoos from housing any species that are not endemic to their region, European zoos will probably turn into glorified aviaries. 
+Why do European zoos need to a have a Endangered species Exchanged Programme?
+Is it really necessary for European zoos to house Asiatic lions to ensure their long term survival?
+Presently the European zoos hold around 40-50 Asiatic lions in captivity.
+The captive Asiatic lion population at the European zoos cannot survive for more than two generations if not supplemented  with founders from Indian zoos.
+As highlighted by Atkins[-@atkinson_assessment_2018], most of the the Asiatic lions at European zoos are not as genetically diverse as previously perceived.
+It might be prudent to ask, why do European zoos, which do not have the bio-cliamtic regime to house Asiatic lions, continue to keep them?
+The answer probably lies in the fact that lions and polar bears are crowd pullers and make quite a lot of money for the zoos.
+I think it is time that zoos all across the world stop importing exotic animals for the pleasure of visitors. 
+Zoos should be allowed to keep animals that they are suitable for their region.
+Zoos should have a conservation plan for all endangered species housed in them.
+I think that most zoos around the world need to trim the fat and reduce their animal holdings to become more sustainable. 
+If a zoo does not have the capability to bred a species *ex-situ*, and have failed at it multiple times, they should not be allowed to acquire any more individuals of the species. 
+

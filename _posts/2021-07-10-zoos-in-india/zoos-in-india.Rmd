@@ -2,7 +2,7 @@
 title: "Are zoos relevant today?"
 description: |
    A short history of zoo-biology and  wildlife conservation in Indian zoos
-draft: false
+draft: true
 author:
   - name: Sitendu Goswami
 date: 07-10-2021
